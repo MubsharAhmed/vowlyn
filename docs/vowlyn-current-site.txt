@@ -1,0 +1,269 @@
+================================================================================
+VOWLYN — CURRENT WEBSITE CONTENT SNAPSHOT
+Source : https://vowlyn.com/
+Fetched: 2026-06-10
+================================================================================
+
+
+--------------------------------------------------------------------------------
+0. BRAND POSITIONING (top of page)
+--------------------------------------------------------------------------------
+
+Tagline / Eyebrow : FUTURE-READY PRODUCT ENGINEERING
+H1               : We Build Digital Products That Scale
+Sub              : Vowlyn helps businesses launch modern web platforms, mobile
+                   apps, AI-powered solutions, and scalable SaaS systems that
+                   drive real growth.
+
+Primary CTA      : START YOUR PROJECT
+Secondary CTA    : VIEW PROJECTS
+
+
+--------------------------------------------------------------------------------
+1. HERO STATS
+--------------------------------------------------------------------------------
+
+  120+   Products Shipped
+  97%    Client Satisfaction
+  7x     Faster Delivery
+
+
+--------------------------------------------------------------------------------
+2. "EXECUTION PULSE" METRICS PANEL (hero side widget)
+--------------------------------------------------------------------------------
+
+  Product Velocity            94%
+  Infrastructure Stability    99.99%
+  AI Automation Coverage      73%
+
+  AI Workflows  ........... Realtime Active
+  Launch Speed  ........... 3.2x Faster
+
+
+--------------------------------------------------------------------------------
+3. SERVICES — "End-to-End Digital Execution for High-Growth Teams"
+--------------------------------------------------------------------------------
+
+01  Modern Web Apps
+    Conversion-focused web platforms engineered for speed, scalability,
+    and premium user experience.
+    Label: STRATEGY + BUILD + SCALE
+
+02  Mobile Engineering
+    Cross-platform and native mobile products that feel intuitive,
+    polished, and built for growth.
+    Label: STRATEGY + BUILD + SCALE
+
+03  AI Integration
+    Practical AI systems, automation workflows, and intelligence layers
+    that unlock measurable impact.
+    Label: STRATEGY + BUILD + SCALE
+
+04  Scalable SaaS
+    Reliable SaaS architectures with robust APIs, subscription flows,
+    and enterprise-grade foundations.
+    Label: STRATEGY + BUILD + SCALE
+
+05  Enterprise Security
+    Security-first engineering with hardened infrastructure, governance,
+    and compliance-ready workflows.
+    Label: STRATEGY + BUILD + SCALE
+
+06  SEO
+    Technical and content SEO frameworks designed to compound visibility
+    and qualified traffic over time.
+    Label: STRATEGY + BUILD + SCALE
+
+
+--------------------------------------------------------------------------------
+4. ABOUT — "We Build Growth Engines, Not Just Websites"
+--------------------------------------------------------------------------------
+
+Vowlyn is a software company focused on modern product execution. Our mission
+is to help ambitious businesses move faster with digital systems that are
+elegant, secure, and built to scale.
+
+Mission & Vision
+    We combine premium design, scalable engineering, and growth strategy so
+    businesses can launch with confidence, adapt quickly, and lead in
+    competitive markets.
+
+  0+   Products Delivered
+  0%   Client Satisfaction
+  0%   Avg. Growth Lift
+  0x   Faster GTM Cycles
+
+(NOTE: numbers are currently zeros on the live site — likely placeholders.)
+
+
+--------------------------------------------------------------------------------
+5. PROCESS — "A Structured Workflow That Delivers Fast"
+--------------------------------------------------------------------------------
+
+Our process is optimized for speed, clarity, and quality from first strategy
+call to post-launch growth.
+
+1. Strategy & Discovery
+   We define business outcomes, map user journeys, and shape a technical
+   blueprint.
+
+2. UX Systems & Prototyping
+   Interactive flows and visual systems are crafted to validate experience
+   before build.
+
+3. Engineering & Integration
+   Our team ships scalable web, mobile, and AI layers with quality and
+   performance built in.
+
+4. Launch & Growth Optimization
+   Post-launch iteration, experimentation, and analytics tuning drive
+   sustained growth.
+
+
+--------------------------------------------------------------------------------
+6. PORTFOLIO — "Real Projects, Measurable Outcomes"
+--------------------------------------------------------------------------------
+
+01  SERVICE WEBSITE
+    Burloak Painting
+    A modern website for commercial and residential painting with strong
+    local lead generation flows.
+    Tags : Service Platform · Local SEO · Lead Conversion
+    URL  : https://burlingtonspainters.com/
+
+02  E-COMMERCE PLATFORM
+    Arian Rugs
+    A premium commerce experience for rugs and carpets with refined
+    browsing and checkout journeys.
+    Tags : E-commerce · Catalog UX · Conversion Design
+    URL  : https://arianrugs.com/
+
+03  OPERATIONS PLATFORM
+    Ontario Buying Group
+    A multi-store purchasing and dispatch system built for operational
+    visibility and scale.
+    Tags : B2B SaaS · Dispatch Workflows · Multi-store Ops
+    URL  : https://ontariobuyinggroup.com/
+
+04  SINGLE PRODUCT E-COMMERCE
+    Lumea
+    A conversion-focused e-commerce experience for selling a single
+    product with a streamlined buying journey.
+    Tags : Single Product Store · E-commerce · Conversion Funnel
+    URL  : https://lumea.pk/
+
+
+--------------------------------------------------------------------------------
+7. WHY VOWLYN — "Built for Teams That Need Premium Outcomes"
+--------------------------------------------------------------------------------
+
+We blend strategic product insight with precision engineering so your digital
+platform becomes a long-term competitive advantage.
+
+  • Senior Product Thinking
+    Every decision aligns with conversion, retention, and long-term product
+    equity.
+
+  • Design + Engineering Unity
+    A collaborative pipeline that removes friction between visuals and
+    implementation.
+
+  • Fast, Predictable Delivery
+    Milestone-based execution with transparent progress and dependable
+    velocity.
+
+  • Growth-Ready Architecture
+    Platforms designed to handle scale, new features, and enterprise
+    expectations.
+
+
+--------------------------------------------------------------------------------
+8. TESTIMONIALS — "Trusted by Teams That Value Quality"
+--------------------------------------------------------------------------------
+
+Our clients choose Vowlyn for high-impact product execution, reliable
+collaboration, and measurable growth.
+
+  "The team merged premium design with performance engineering. Our
+   customers now enjoy a much smoother buying experience."
+   — Daniel Arian, Founder, Arian Rugs
+
+
+--------------------------------------------------------------------------------
+9. LANGUAGES & FRAMEWORKS — "Languages and Frameworks We Work With"
+--------------------------------------------------------------------------------
+
+PROGRAMMING LANGUAGES
+  JavaScript · TypeScript · Python · Java · C# · Go · PHP · Ruby ·
+  Kotlin · Swift · Dart · SQL · HTML5 · CSS3 · Bash
+
+FRAMEWORKS & LIBRARIES
+  React · Next.js · Vue.js · Nuxt · Angular · Svelte · Express.js ·
+  NestJS · Django · Flask · FastAPI · Laravel · Spring Boot · .NET ·
+  React Native · Flutter · Tailwind CSS · Framer Motion
+
+
+--------------------------------------------------------------------------------
+10. TECHNOLOGY STACK — "Modern Tools Behind Every Build"
+--------------------------------------------------------------------------------
+
+We choose technology based on performance, scalability, and long-term
+maintainability.
+
+  React · Next.js · Node.js · TypeScript · Python · AWS · Docker ·
+  PostgreSQL · MongoDB · OpenAI · Tailwind · Framer Motion
+
+
+--------------------------------------------------------------------------------
+11. CONTACT — "Start Your Project With Vowlyn"
+--------------------------------------------------------------------------------
+
+Share your goals and we will return with a strategic action plan, timeline,
+and product roadmap.
+
+  Response time      : within 24 hours
+  Engagement models  : fixed scope · dedicated team · retainer
+  Regions served     : North America · Europe · MENA
+
+Form fields:
+  NAME · EMAIL · COMPANY · PROJECT BRIEF
+  Submit button : SEND REQUEST
+
+
+--------------------------------------------------------------------------------
+12. FOOTER
+--------------------------------------------------------------------------------
+
+Brand line : Vowlyn — Premium software company for modern digital growth.
+
+Nav links  : Home · Services · About · Process · Projects · Why Us ·
+             Testimonials · Languages · Contact
+
+Social     : LinkedIn · Dribbble · X
+
+Copyright  : © 2026 Vowlyn. All rights reserved.
+
+
+--------------------------------------------------------------------------------
+13. SITE STRUCTURE (current)
+--------------------------------------------------------------------------------
+
+Single-page site with anchor sections:
+  #home         → Hero
+  #services     → Services grid (6)
+  #about        → About + mission stats
+  #process      → 4-step workflow
+  #projects     → Portfolio (4)
+  #why-us       → Differentiators (4)
+  #testimonials → Quote(s)
+  #languages    → Tech stack
+  #contact      → Contact form
+
+Primary CTAs across the page:
+  • Start Your Project  (anchors to #contact)
+  • View Projects       (anchors to #projects)
+
+
+================================================================================
+END OF SNAPSHOT
+================================================================================

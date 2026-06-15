@@ -1,0 +1,852 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+/* ============================================================================
+   VOWLYN — DESIGN TOKENS (mapped from DESIGN.md)
+   Deep Indigo primary · Lavender surfaces · Pale Pink accents · Slate neutral
+   Modern-Corporate + Minimalism + Glassmorphism aesthetic
+   ============================================================================ */
+
+@theme {
+  /* -------- Type families -------- */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Montserrat', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* -------- Primary — Deep Indigo #4B0082 ramp -------- */
+  --color-primary-50: #f5edff;
+  --color-primary-100: #ecd9ff;
+  --color-primary-200: #d4adff;
+  --color-primary-300: #ba7ef4;
+  --color-primary-400: #9a4fe0;
+  --color-primary-500: #7b41b3;
+  --color-primary-600: #622599;
+  --color-primary-700: #4b0082;
+  /* BASE — DESIGN.md primary-container */
+  --color-primary-800: #2e0052;
+  /* DESIGN.md primary */
+  --color-primary-900: #1a002e;
+  --color-primary-950: #0d0017;
+
+  /* -------- Secondary — Lavender #E6E6FA ramp -------- */
+  --color-lavender-50: #fafaff;
+  --color-lavender-100: #f4f4fd;
+  --color-lavender-200: #ecedfa;
+  --color-lavender-300: #e6e6fa;
+  /* BASE */
+  --color-lavender-400: #c5c5d8;
+  --color-lavender-500: #a0a0bd;
+  --color-lavender-600: #7a7a9a;
+  --color-lavender-700: #5c5d6e;
+  --color-lavender-800: #444655;
+  --color-lavender-900: #2a2b38;
+
+  /* -------- Tertiary — Pale Pink #FFD1DC ramp -------- */
+  --color-blush-50: #fff5f8;
+  --color-blush-100: #ffe7ee;
+  --color-blush-200: #ffd1dc;
+  /* BASE */
+  --color-blush-300: #ffb3c4;
+  --color-blush-400: #ff8aa3;
+  --color-blush-500: #f4607f;
+  --color-blush-600: #d63d62;
+  --color-blush-700: #a82748;
+  --color-blush-800: #7a1832;
+  --color-blush-900: #4c0d1f;
+
+  /* -------- Neutral — Slate #708090 ramp -------- */
+  --color-slate-50: #f7f9ff;
+  /* surface base (DESIGN.md) */
+  --color-slate-100: #ecf4ff;
+  --color-slate-200: #d9eafc;
+  --color-slate-300: #cbdcee;
+  --color-slate-400: #a8b4c4;
+  --color-slate-500: #708090;
+  /* BASE */
+  --color-slate-600: #4c4451;
+  --color-slate-700: #2a323e;
+  --color-slate-800: #1a2230;
+  --color-slate-900: #0d1d2a;
+  /* on-surface (DESIGN.md) */
+  --color-slate-950: #050c14;
+
+  /* -------- Surfaces (Material 3 inspired, from DESIGN.md) -------- */
+  --color-surface: #f7f9ff;
+  --color-surface-low: #ecf4ff;
+  --color-surface-container: #e2efff;
+  --color-surface-high: #d9eafc;
+  --color-surface-highest: #d4e4f6;
+  --color-surface-inverse: #0b0b12;
+  /* deep ink — dark stage */
+  --color-surface-ink: #0d0a18;
+  /* near-black with indigo tint */
+  --color-on-surface: #0d1d2a;
+  --color-on-surface-variant: #4c4451;
+  --color-on-inverse: #e7f2ff;
+
+  /* -------- Status -------- */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+
+  /* -------- Brand gradient (logo signature: cyan → indigo → magenta) -------- */
+  --gradient-brand: linear-gradient(105deg,
+      #18d2ff 0%,
+      #5c7cf5 30%,
+      #7b41b3 55%,
+      #c8459b 85%,
+      #ff7ab8 100%);
+
+  /* -------- Radii -------- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  /* primary card/button radius (DESIGN.md) */
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  /* -------- Tinted indigo shadows (no harsh black) -------- */
+  --shadow-xs: 0 1px 2px 0 rgba(75, 0, 130, 0.04);
+  --shadow-sm: 0 2px 8px -2px rgba(75, 0, 130, 0.06), 0 1px 3px -1px rgba(75, 0, 130, 0.04);
+  --shadow-md: 0 8px 24px -6px rgba(75, 0, 130, 0.08), 0 2px 6px -2px rgba(75, 0, 130, 0.06);
+  --shadow-lg: 0 20px 40px -12px rgba(75, 0, 130, 0.12), 0 6px 12px -4px rgba(75, 0, 130, 0.06);
+  --shadow-xl: 0 32px 64px -16px rgba(75, 0, 130, 0.16), 0 12px 20px -8px rgba(75, 0, 130, 0.08);
+  --shadow-glow: 0 0 60px -10px rgba(123, 65, 179, 0.45);
+
+  /* -------- Spacing rhythm (8px grid from DESIGN.md) -------- */
+  --spacing-section: 6rem;
+  /* 96px desktop section padding */
+  --spacing-gutter: 1.5rem;
+}
+
+/* ============================================================================
+   CUSTOM UTILITIES — Vowlyn signature elements
+   ============================================================================ */
+
+/* Glass card — light surface variant (frosted lavender) */
+@utility glass-light {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(230, 230, 250, 0.55) 100%);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(75, 0, 130, 0.08);
+  box-shadow: 0 8px 24px -6px rgba(75, 0, 130, 0.08);
+}
+
+/* Glass card — dark surface variant (frosted ink) */
+@utility glass-dark {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Dark pill UI island (from design system grid — for nav, action bars, ticker chips) */
+@utility pill-dark {
+  background: linear-gradient(180deg, #1a1326 0%, #0d0a18 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--color-on-inverse);
+}
+
+/* Brand gradient text */
+@utility text-brand-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Brand gradient border (via mask) */
+@utility border-brand-gradient {
+  position: relative;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+
+.border-brand-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-brand);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Mesh background — soft lavender gradient mesh for hero atmosphere */
+@utility bg-mesh-light {
+  background-color: #f7f9ff;
+  background-image:
+    radial-gradient(at 18% 12%, rgba(186, 126, 244, 0.18) 0px, transparent 50%),
+    radial-gradient(at 82% 8%, rgba(255, 209, 220, 0.22) 0px, transparent 45%),
+    radial-gradient(at 70% 90%, rgba(123, 65, 179, 0.12) 0px, transparent 55%),
+    radial-gradient(at 10% 88%, rgba(230, 230, 250, 0.65) 0px, transparent 45%);
+}
+
+/* Mesh background — deep ink with violet aurora */
+@utility bg-mesh-dark {
+  background-color: #0b0b12;
+  background-image:
+    radial-gradient(at 15% 15%, rgba(123, 65, 179, 0.35) 0px, transparent 55%),
+    radial-gradient(at 85% 10%, rgba(24, 210, 255, 0.10) 0px, transparent 45%),
+    radial-gradient(at 50% 95%, rgba(200, 69, 155, 0.18) 0px, transparent 60%);
+}
+
+/* Brand stage — full brand gradient (cyan → indigo → magenta → pink) used as
+   a dark section background. Layers the brand hues as radial blobs over a
+   deep violet base so white text remains legible.
+   Mirrors the same color story as `text-brand-gradient`. */
+@utility bg-brand-stage {
+  background-color: #0d0420;
+  background-image:
+    radial-gradient(at 12% 18%, rgba(24, 210, 255, 0.28) 0px, transparent 55%),
+    radial-gradient(at 38% 8%, rgba(92, 124, 245, 0.26) 0px, transparent 50%),
+    radial-gradient(at 60% 55%, rgba(123, 65, 179, 0.38) 0px, transparent 60%),
+    radial-gradient(at 88% 78%, rgba(200, 69, 155, 0.30) 0px, transparent 55%),
+    radial-gradient(at 28% 92%, rgba(255, 122, 184, 0.22) 0px, transparent 50%),
+    linear-gradient(135deg, #0a0518 0%, #160a2c 50%, #1c0a36 100%);
+}
+
+/* Subtle grain overlay for premium texture */
+@utility grain {
+  position: relative;
+}
+
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hairline rule — uses tinted indigo */
+@utility rule-soft {
+  border-color: rgba(75, 0, 130, 0.08);
+}
+
+/* ============================================================================
+   3D SCENE — perspective container + tilt-ready primitives
+   Used with GSAP rotationX/rotationY / translateZ animations.
+   ============================================================================ */
+
+/* Parent container that establishes 3D perspective for its children */
+@utility scene-3d {
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+
+/* Animated 3D children get GPU promotion + preserve-3d */
+[data-hero-scene],
+[data-cylinder],
+[data-cube],
+[data-tilt] {
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+[data-hero-scene] {
+  transform-origin: 50% 50%;
+}
+
+/* Tilt cards get smoother depth — keep contents on their own plane */
+[data-tilt] {
+  transform: translateZ(0);
+}
+
+/* Eyebrow label — mono, uppercase, tracked (e.g. "01 / SERVICES") */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary-700);
+}
+
+/* Display headline rhythm — large with tight tracking */
+@utility headline-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+/* Mega display — for the "Play / Reel" flanking words.
+   Scales with viewport so it reads as a graphic, not a label. */
+@utility display-mega {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  /* clamp(min, fluid, max) — caps at 18rem on huge screens */
+  font-size: clamp(5rem, 17vw, 18rem);
+  line-height: 0.82;
+}
+
+/* Reel headline — sized to fit "Play [▶] Projects" on one line at desktop. */
+@utility display-reel {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  /* fits Play + button + Projects horizontally inside container-vw */
+  font-size: clamp(3.25rem, 9vw, 9.5rem);
+  line-height: 0.85;
+}
+
+/* Parallax + reel reveal items get GPU promotion */
+[data-parallax],
+[data-reel-word],
+[data-reel-media],
+[data-reel-caption] {
+  will-change: transform, opacity;
+}
+
+/* ============================================================================
+   CURSOR-SPOTLIGHT CARD
+   A radial-gradient glow that follows the user's pointer inside the card.
+   JS in app.js writes --mouse-x / --mouse-y on pointermove.
+   ============================================================================ */
+@utility card-spotlight {
+  position: relative;
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(123, 65, 179, 0.16),
+      transparent 42%);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+
+/* ============================================================================
+   INFINITE MARQUEE
+   Track is duplicated in markup, translateX(-50%) loops seamlessly.
+   Hover pauses for readability.
+   ============================================================================ */
+@utility marquee-track {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee-slide 38s linear infinite;
+  will-change: transform;
+}
+
+/* Speed modifiers for marquee tracks */
+.marquee-track[data-marquee-speed="slow"] {
+  animation-duration: 60s;
+}
+
+.marquee-track[data-marquee-speed="medium"] {
+  animation-duration: 42s;
+}
+
+.marquee-track[data-marquee-speed="fast"] {
+  animation-duration: 26s;
+}
+
+.marquee-track[data-marquee-reverse] {
+  animation-direction: reverse;
+}
+
+/* Lane container — clips overflow and applies a soft fade at both edges */
+@utility marquee-lane {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+/* ============================================================================
+   LOADOUT PLATES (Stack section — engineering tool dossier cards)
+   - .plate-grid : etched blueprint grid background
+   - [data-glyph-group] paths get stroke-dasharray set by JS for draw-in
+   ============================================================================ */
+@utility plate-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+
+.loadout-plate {
+  transition: border-color 0.5s ease, background-color 0.5s ease;
+  will-change: transform;
+}
+
+.loadout-plate:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background-color: rgba(13, 4, 32, 0.7);
+}
+
+/* Initial state for stroke draw-in — JS overrides per-path once getTotalLength is known */
+[data-glyph-group] path,
+[data-glyph-group] ellipse,
+[data-glyph-group] rect,
+[data-glyph-group] circle,
+[data-glyph-group] line {
+  vector-effect: non-scaling-stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loadout-plate {
+    transition: none;
+  }
+
+  [data-glyph-group] * {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+@keyframes marquee-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ============================================================================
+   LIVE-OPS SPARKLINES (Execution Pulse card)
+   - [data-sparkline-stroke]: line draws in from left to right on load
+   - [data-sparkline-area]:   gradient fill fades in after the line
+   - [data-ekg]:              continuous dash-flow ticker
+   ============================================================================ */
+[data-sparkline-stroke] {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: sparkline-draw 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+[data-sparkline-area] {
+  opacity: 0;
+  animation: sparkline-fade 1.4s ease-out 1s forwards;
+}
+
+[data-ekg] {
+  stroke-dasharray: 3 3;
+  animation: ekg-flow 1.4s linear infinite;
+}
+
+@keyframes sparkline-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sparkline-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ekg-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-sparkline-stroke] {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  [data-sparkline-area] {
+    animation: none;
+    opacity: 1;
+  }
+
+  [data-ekg] {
+    animation: none;
+  }
+}
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+  }
+
+  ::selection {
+    background-color: var(--color-primary-700);
+    color: #fff;
+  }
+
+  /* Custom scrollbar — slim, indigo */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(75, 0, 130, 0.25);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 0, 130, 0.45);
+    background-clip: content-box;
+  }
+
+  /* Smooth scroll fallback when Lenis disabled */
+  html.no-lenis {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus rings — accessible, brand-colored */
+  :focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ============================================================================
+   COMPONENT CLASSES — re-usable building blocks
+   ============================================================================ */
+
+@layer components {
+
+  /* Container — premium airy margins (DESIGN.md: 64px+ desktop) */
+  .container-vw {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 88rem;
+    /* 1408px */
+  }
+
+  @media (min-width: 768px) {
+    .container-vw {
+      padding-inline: 3rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-vw {
+      padding-inline: 4rem;
+    }
+  }
+
+  /* Section base — generous vertical padding for premium feel */
+  .section-vw {
+    padding-block: 5rem;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .section-vw {
+      padding-block: 6rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .section-vw {
+      padding-block: 8rem;
+    }
+  }
+
+  /* Primary button — solid Deep Indigo (DESIGN.md) */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.625rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    will-change: transform;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  .btn-primary {
+    background: var(--color-primary-700);
+    color: #fff;
+    box-shadow: 0 8px 20px -6px rgba(75, 0, 130, 0.35);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-800);
+    box-shadow: 0 12px 28px -6px rgba(75, 0, 130, 0.45), 0 0 0 4px rgba(123, 65, 179, 0.12);
+  }
+
+  .btn-secondary {
+    background: var(--color-lavender-300);
+    color: var(--color-primary-700);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-lavender-200);
+  }
+
+  .btn-inverted {
+    background: var(--color-surface-ink);
+    color: var(--color-on-inverse);
+  }
+
+  .btn-inverted:hover {
+    background: #1a1326;
+  }
+
+  .btn-outlined {
+    background: transparent;
+    color: var(--color-primary-800);
+    border-color: var(--color-primary-700);
+  }
+
+  .btn-outlined:hover {
+    background: var(--color-primary-700);
+    color: #fff;
+  }
+
+  .btn-ghost-light {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+  }
+
+  .btn-ghost-light:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+
+  /* Card — lavender border + 16px radius (DESIGN.md) */
+  .card-vw {
+    background: #fff;
+    border: 1px solid var(--color-lavender-300);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-vw:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary-300);
+    box-shadow: 0 24px 48px -16px rgba(75, 0, 130, 0.18);
+  }
+
+  /* Section eyebrow numbered (e.g. "01 / SERVICES") */
+  .eyebrow-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .eyebrow-row::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--color-primary-700);
+  }
+}
+
+/* ============================================================================
+   REVEAL ANIMATIONS — used by GSAP / data-reveal attributes
+   ============================================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================================
+   PAGE-SPECIFIC UTILITIES
+   ============================================================================ */
+
+/* --- Cinema strip (Services page) ---
+   The track is horizontally translated by GSAP; we just need it to lay out
+   children in a row and respect will-change so the browser composites it. */
+.cinema-pin {
+  overflow: hidden;
+}
+
+.cinema-track {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Drop-cap for editorial manifesto (About page) */
+.dropcap {
+  font-feature-settings: 'liga' on;
+  letter-spacing: -0.02em;
+}
+
+/* Hide [x-cloak] elements until Alpine boots — prevents view-toggle flicker */
+[x-cloak] {
+  display: none !important;
+}
+
+/* Editorial body prose tweaks — used inside .prose-editorial wrappers */
+.prose-editorial p {
+  hyphens: auto;
+}
+
+/* ----------------------------------------------------------------------------
+   ACCORDION WALL — "The Room" team section (About page)
+   Horizontal stalls that expand on hover/focus. Pure CSS, no JS required.
+   ---------------------------------------------------------------------------- */
+.accordion-wall {
+  isolation: isolate;
+}
+
+.accordion-wall .stall {
+  flex: 1 1 0;
+  min-width: 4.5rem;
+  transition: flex-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: flex-grow;
+}
+
+.accordion-wall:hover .stall,
+.accordion-wall:focus-within .stall {
+  flex-grow: 0.65;
+}
+
+.accordion-wall .stall:hover,
+.accordion-wall .stall:focus-visible {
+  flex-grow: 5;
+}
+
+.accordion-wall .stall-collapsed,
+.accordion-wall .stall-expanded {
+  transition: opacity 0.45s ease;
+}
+
+.accordion-wall .stall:hover .stall-collapsed,
+.accordion-wall .stall:focus-visible .stall-collapsed {
+  opacity: 0;
+}
+
+.accordion-wall .stall:hover .stall-expanded,
+.accordion-wall .stall:focus-visible .stall-expanded {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.15s;
+}
+
+@media (max-width: 768px) {
+  .accordion-wall {
+    flex-wrap: wrap;
+    height: auto !important;
+  }
+
+  .accordion-wall .stall {
+    flex: 0 0 calc(50% - 0.25rem);
+    height: 14rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-wall .stall {
+    transition: none;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   CREW CARDS — 3D tilt readiness (About → The Crew)
+   The [data-tilt] hook applies the rotation; we just need a perspective root
+   and preserve-3d so children render with depth instead of flattening.
+   ---------------------------------------------------------------------------- */
+.crew-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.crew-card:hover {
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
+}

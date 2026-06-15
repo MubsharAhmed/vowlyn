@@ -1,0 +1,62 @@
+name: Deploy Vowlyn
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: composer:v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install PHP deps
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+        working-directory: site
+
+      - name: Install & build frontend
+        run: |
+          npm install --omit=dev
+          npm run build
+        working-directory: site
+
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add VPS to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Rsync to VPS
+        run: |
+          rsync -avz --delete --exclude='.env' --exclude='node_modules' --exclude='vendor' \
+            site/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/vowlyn/site
+
+      - name: Post-deploy commands
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+            set -euo pipefail
+            cd /var/www/vowlyn/site
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            sudo systemctl reload nginx
+            sudo supervisorctl restart vowlyn-queue:* || true
+          EOF
