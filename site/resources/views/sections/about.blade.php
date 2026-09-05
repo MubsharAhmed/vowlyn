@@ -15,14 +15,17 @@
         {{-- Section intro --}}
         <div class="max-w-3xl mb-12 lg:mb-16">
             <div class="eyebrow-row mb-5" data-reveal>
-                <span class="eyebrow">02 / Who we are</span>
+                <span class="eyebrow">Who we are</span>
             </div>
             <h2 class="headline-display text-4xl sm:text-5xl lg:text-6xl text-slate-900 mb-6" data-reveal data-reveal-delay="0.05">
                 Engineered for ambitious founders,
-                <span class="text-brand-gradient">built for scale.</span>
+                <span class="text-brand-gradient">built to scale.</span>
             </h2>
             <p class="text-lg text-on-surface/65 max-w-2xl leading-relaxed" data-reveal data-reveal-delay="0.12">
-                Vowlyn helps businesses launch modern web platforms, mobile apps, AI-powered solutions and scalable SaaS systems. Senior product engineering, embedded into your team.
+                Vowlyn is
+                <a href="{{ route('about') }}" class="text-primary-700 font-medium underline decoration-primary-300 underline-offset-4 hover:decoration-primary-600 transition">a small, senior software development studio</a>.
+                Strategy, design, engineering, and launch live under one roof — so your product ships fast, stays
+                secure, and scales without drama.
             </p>
         </div>
 
@@ -34,7 +37,7 @@
 
             {{-- ============ CARD 1 — Dark manifesto ============ --}}
             <div data-stagger-item data-tilt data-tilt-max="5"
-                 class="lg:col-span-3 bg-surface-ink rounded-[1.75rem] p-7 grain relative overflow-hidden flex flex-col justify-between min-h-[460px] lg:min-h-[520px] border border-white/8">
+                 class="lg:col-span-3 bg-brand-stage rounded-[1.75rem] p-7 grain relative overflow-hidden flex flex-col justify-between min-h-[460px] lg:min-h-[520px] border border-white/8">
 
                 <div aria-hidden="true" class="absolute -top-24 -right-16 size-56 rounded-full bg-primary-700/45 blur-3xl pointer-events-none"></div>
                 <div aria-hidden="true" class="absolute -bottom-20 -left-16 size-44 rounded-full bg-blush-500/25 blur-3xl pointer-events-none"></div>
@@ -70,7 +73,7 @@
                     {{-- Portrait frame --}}
                     <div class="relative rounded-[1.25rem] overflow-hidden bg-lavender-100 min-h-[280px] sm:min-h-full">
                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=750&fit=crop&q=80&auto=format"
-                             alt="Vowlyn product strategist at work"
+                             alt="Vowlyn software developer building a web application"
                              loading="lazy"
                              width="600" height="750"
                              class="absolute inset-0 w-full h-full object-cover object-center" />
@@ -114,7 +117,7 @@
                                 <p class="text-[10px] font-mono uppercase tracking-[0.12em] text-on-surface/45 mb-1">Avg. response</p>
                                 <p class="font-display text-xl font-bold text-slate-900 leading-none">&lt; 24h</p>
                             </div>
-                            <div class="rounded-2xl bg-slate-900 text-white px-4 py-3 relative overflow-hidden">
+                            <div class="rounded-2xl bg-brand-stage text-white px-4 py-3 relative overflow-hidden">
                                 <div aria-hidden="true" class="absolute -top-4 -right-4 size-12 rounded-full bg-primary-500/40 blur-xl"></div>
                                 <p class="text-[10px] font-mono uppercase tracking-[0.12em] text-white/55 mb-1 relative">2026 capacity</p>
                                 <p class="font-display text-xl font-bold leading-none relative">3 slots left</p>
@@ -162,7 +165,7 @@
 
                     <div class="relative flex items-start gap-3 mb-4">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&q=80&auto=format"
-                             alt="Daniel Arian, Founder Arian Rugs"
+                             alt="Daniel Arian, founder of Arian Rugs, a Vowlyn e-commerce client"
                              loading="lazy"
                              width="48" height="48"
                              class="size-12 rounded-full object-cover border-2 border-white/30 shrink-0" />

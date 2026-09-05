@@ -17,10 +17,10 @@
     </div>
 
     <div class="container-vw relative">
-        <div class="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+        <div class="grid min-w-0 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
 
             {{-- LEFT: copy -------------------------------------------------- --}}
-            <div class="relative">
+            <div class="relative min-w-0">
                 {{-- Eyebrow pill --}}
                 <div class="inline-flex items-center gap-2.5 pill-dark rounded-full pl-2 pr-4 py-1.5 mb-7 text-xs" data-reveal>
                     <span class="grid place-items-center size-6 rounded-full bg-gradient-to-br from-primary-400 to-blush-400">
@@ -32,9 +32,9 @@
                 {{-- Headline --}}
                 <h1 class="headline-display text-5xl sm:text-6xl lg:text-[5.25rem] xl:text-[5.75rem] mb-7 text-slate-900" data-reveal data-reveal-delay="0.08">
                     We Build
-                    <span class="relative inline-block">
-                        Digital&nbsp;Products
-                        <svg aria-hidden="true" viewBox="0 0 400 14" class="absolute -bottom-2 left-0 w-full h-3 text-primary-700/40" preserveAspectRatio="none">
+                    <span class="relative sm:inline-block">
+                        Digital Products
+                        <svg aria-hidden="true" viewBox="0 0 400 14" class="absolute -bottom-2 left-0 hidden w-full h-3 text-primary-700/40 sm:block" preserveAspectRatio="none">
                             <path d="M 2 8 Q 100 2, 200 7 T 398 6" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" />
                         </svg>
                     </span>
@@ -42,14 +42,16 @@
                     That <span class="text-brand-gradient">Scale.</span>
                 </h1>
 
-                {{-- Sub --}}
+                {{-- Sub — leads with the primary keyword (SEO rewrite, 2026) --}}
                 <p class="text-lg sm:text-xl text-on-surface/65 max-w-xl leading-relaxed mb-9" data-reveal data-reveal-delay="0.18">
-                    Vowlyn helps businesses launch modern web platforms, mobile apps, AI-powered solutions, and scalable SaaS systems that drive real growth.
+                    Vowlyn is a <strong class="font-semibold text-on-surface">custom software development studio</strong> that designs, engineers, and scales
+                    web apps, mobile apps, AI features, and SaaS platforms — for founders and teams who need
+                    measurable outcomes, not vendor lock-in.
                 </p>
 
                 {{-- CTAs --}}
-                <div class="flex flex-wrap items-center gap-3.5 mb-12" data-reveal data-reveal-delay="0.26">
-                    <a href="#contact" data-magnetic="0.2" class="btn btn-primary !py-4 !px-7">
+                <div class="flex flex-wrap items-center gap-3.5 mb-8" data-reveal data-reveal-delay="0.26">
+                    <a href="#hero-contact-form" data-magnetic="0.2" class="btn btn-primary !py-4 !px-7">
                         Start Your Project
                         <i data-lucide="arrow-up-right" class="size-4"></i>
                     </a>
@@ -58,6 +60,12 @@
                         View Projects
                     </a>
                 </div>
+
+                {{-- Quick Answer (GEO) — the paragraph AI engines lift verbatim --}}
+                <x-quick-answer class="max-w-xl mb-12" data-reveal data-reveal-delay="0.3">
+                    Vowlyn is a custom software development studio that builds web apps, mobile apps, AI features,
+                    and scalable SaaS platforms. A small, senior team ships fast — and you own the code.
+                </x-quick-answer>
 
                 {{-- Hero stats row --}}
                 <div class="flex flex-wrap gap-x-10 gap-y-5" data-stagger="0.12">
@@ -77,7 +85,10 @@
                 </div>
             </div>
 
-            {{-- RIGHT: 3D glass platter composition -------------------------
+            @include('sections.hero-contact-form')
+
+            @if (false)
+            {{-- Legacy 3D glass platter composition (not rendered) ----------
                  Architecture (back → front):
                   1. Ambient ground shadow
                   2. Platter side (thickness band — darker)
@@ -231,6 +242,7 @@
                     <i data-lucide="plus" class="size-5 text-white"></i>
                 </div>
             </div>
+            @endif
         </div>
 
         {{-- ─── Bottom: "Execution Pulse" live ops console ─── --}}
@@ -276,7 +288,7 @@
         @endphp
 
         <div class="mt-16 lg:mt-20 relative" data-reveal data-reveal-delay="0.1">
-            <div class="bg-surface-ink rounded-3xl p-6 sm:p-8 lg:p-10 grain relative overflow-hidden border border-white/10 shadow-xl">
+            <div class="bg-brand-stage rounded-3xl p-6 sm:p-8 lg:p-10 grain relative overflow-hidden border border-white/10 shadow-xl">
 
                 {{-- Decorative gradient blobs --}}
                 <div aria-hidden="true"

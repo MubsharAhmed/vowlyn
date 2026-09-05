@@ -2,6 +2,8 @@
    CONTACT — "Start Your Project With Vowlyn"
    Split layout: info column + form. CSRF protected, Alpine validation hints.
    ============================================================================ --}}
+@php($serviceOptions = \App\Support\ServiceCatalog::options())
+
 <section id="contact" class="section-vw bg-gradient-to-b from-lavender-100/50 via-surface to-surface relative overflow-hidden">
     <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
         <div class="absolute -bottom-32 -left-20 size-[32rem] rounded-full bg-primary-300/25 blur-3xl"></div>
@@ -14,13 +16,14 @@
             {{-- LEFT: copy + meta --}}
             <div>
                 <div class="eyebrow-row mb-5" data-reveal>
-                    <span class="eyebrow">08 / Contact</span>
+                    <span class="eyebrow">Contact</span>
                 </div>
                 <h2 class="headline-display text-4xl sm:text-5xl lg:text-6xl text-slate-900 mb-7" data-reveal data-reveal-delay="0.05">
-                    Start Your Project<br />With <span class="text-brand-gradient">Vowlyn.</span>
+                    Start Your Software Project<br />With <span class="text-brand-gradient">Vowlyn.</span>
                 </h2>
                 <p class="text-lg text-on-surface/65 leading-relaxed mb-10 max-w-md" data-reveal data-reveal-delay="0.12">
-                    Share your goals and we will return with a strategic action plan, timeline, and product roadmap.
+                    Share your goals and we'll return with a strategic action plan, timeline, and product roadmap —
+                    within 24 hours.
                 </p>
 
                 <ul class="space-y-5" data-stagger="0.1">
@@ -49,6 +52,7 @@
                       x-data="{ loading: false }"
                       @submit="loading = true">
                     @csrf
+                    <input type="hidden" name="form_source" value="contact" />
 
                     {{-- Status flash --}}
                     @if (session('contact.success'))
@@ -77,13 +81,20 @@
                             @error('email') <p class="mt-2 text-xs text-error">{{ $message }}</p> @enderror
                         </div>
 
-                        {{-- Company --}}
+                        {{-- Service --}}
                         <div class="sm:col-span-2">
-                            <label for="company" class="eyebrow !text-on-surface/55 mb-2 block">Company</label>
-                            <input type="text" id="company" name="company" value="{{ old('company') }}"
-                                   class="w-full rounded-xl bg-lavender-100/70 focus:bg-white border-2 border-transparent focus:border-primary-700 px-4 py-3.5 text-slate-900 placeholder:text-on-surface/40 transition outline-none"
-                                   placeholder="Where you work" />
-                            @error('company') <p class="mt-2 text-xs text-error">{{ $message }}</p> @enderror
+                            <label for="contact-service" class="eyebrow !text-on-surface/55 mb-2 block">How can we help? *</label>
+                            <div class="relative">
+                                <select id="contact-service" name="service" required
+                                        class="w-full appearance-none rounded-xl bg-lavender-100/70 focus:bg-white border-2 border-transparent focus:border-primary-700 px-4 py-3.5 pr-11 text-slate-900 transition outline-none">
+                                    <option value="" disabled @selected(!old('service'))>Choose a service</option>
+                                    @foreach ($serviceOptions as $slug => $service)
+                                        <option value="{{ $slug }}" @selected(old('service') === $slug)>{{ $service }}</option>
+                                    @endforeach
+                                </select>
+                                <i data-lucide="chevrons-up-down" class="absolute right-4 top-1/2 size-4 -translate-y-1/2 text-primary-700 pointer-events-none"></i>
+                            </div>
+                            @error('service') <p class="mt-2 text-xs text-error">{{ $message }}</p> @enderror
                         </div>
 
                         {{-- Project brief --}}

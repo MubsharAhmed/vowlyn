@@ -18,7 +18,7 @@ icon halos, deliverable chips, and a scroll-tracked progress thread.
             'num' => '02',
             'phase' => 'Phase two',
             'title' => 'UX Systems & Prototyping',
-            'desc' => 'Interactive flows and a scalable visual system are crafted to validate the experience before build.',
+            'desc' => 'Interactive flows and a scalable design system validate the experience before the build starts.',
             'icon' => 'pencil-ruler',
             'deliverables' => ['Wireframes', 'Design system', 'Clickable prototype'],
             'duration' => '2 – 4 weeks',
@@ -27,7 +27,7 @@ icon halos, deliverable chips, and a scroll-tracked progress thread.
             'num' => '03',
             'phase' => 'Phase three',
             'title' => 'Engineering & Integration',
-            'desc' => 'Our team ships scalable web, mobile, and AI layers with performance, accessibility, and tests built in.',
+            'desc' => 'Senior engineers ship scalable web, mobile, and AI layers with performance, accessibility, and tests built in.',
             'icon' => 'cpu',
             'deliverables' => ['Production build', 'APIs & integrations', 'QA & CI'],
             'duration' => '4 – 12 weeks',
@@ -55,18 +55,18 @@ icon halos, deliverable chips, and a scroll-tracked progress thread.
         <div class="grid lg:grid-cols-[1fr_1.1fr] gap-10 mb-16 lg:mb-24 items-end">
             <div>
                 <div class="eyebrow-row mb-5" data-reveal>
-                    <span class="eyebrow !text-primary-300">03 / Process</span>
+                    <span class="eyebrow !text-primary-300">Process</span>
                 </div>
                 <h2 class="headline-display text-4xl sm:text-5xl lg:text-6xl text-white" data-reveal
                     data-reveal-delay="0.05">
-                    A Structured Workflow<br />That <span class="text-brand-gradient">Delivers Fast.</span>
+                    A Software Development Process<br />Built to <span class="text-brand-gradient">Deliver Fast.</span>
                 </h2>
             </div>
 
             <div class="space-y-6 max-w-lg lg:justify-self-end" data-reveal data-reveal-delay="0.12">
                 <p class="text-white/65 text-lg leading-relaxed">
-                    Our process is optimized for speed, clarity, and quality &mdash; from first strategy
-                    call to post-launch growth.
+                    Every engagement moves through four tight phases — strategy, prototyping, engineering, and
+                    launch — so you always know what happens next, and when.
                 </p>
                 {{-- Mini stats row --}}
                 <div class="flex flex-wrap items-center gap-x-8 gap-y-3 pt-2">

@@ -114,17 +114,17 @@ Studio tool plates + stats strip + streaming type marquees on brand stage
         <div class="grid lg:grid-cols-[1fr_1.2fr] gap-10 mb-14 lg:mb-20 items-end">
             <div>
                 <div class="eyebrow-row mb-5" data-reveal>
-                    <span class="eyebrow !text-primary-300">07 / Stack</span>
+                    <span class="eyebrow !text-primary-300">Stack</span>
                 </div>
                 <h2 class="headline-display text-4xl sm:text-5xl lg:text-6xl text-white" data-reveal
                     data-reveal-delay="0.05">
-                    Modern Tools Behind<br /><span class="text-brand-gradient">Every Build.</span>
+                    The Modern Stack Behind<br /><span class="text-brand-gradient">Every Build.</span>
                 </h2>
             </div>
             <div class="space-y-5 lg:justify-self-end max-w-lg" data-reveal data-reveal-delay="0.12">
                 <p class="text-white/65 text-lg leading-relaxed">
-                    We choose technology based on performance, scalability, and long-term maintainability — and we go
-                    deep where it matters.
+                    Next.js, React Native, Laravel, Python, AWS, and OpenAI — chosen for performance, scalability,
+                    and long-term maintainability, and gone deep where it matters.
                 </p>
                 <div
                     class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 bg-white/[0.04] border border-white/10">
@@ -139,7 +139,7 @@ Studio tool plates + stats strip + streaming type marquees on brand stage
         </div>
 
         {{-- ═══ Signature tool plates ═══ --}}
-        <div class="mb-16 lg:mb-20">
+        <!-- <div class="mb-16 lg:mb-20">
             <div class="flex items-center justify-between mb-8 flex-wrap gap-3">
                 <div class="flex items-center gap-3">
                     <span class="h-px w-8 bg-white/30"></span>
@@ -250,10 +250,10 @@ Studio tool plates + stats strip + streaming type marquees on brand stage
                     </article>
                 @endforeach
             </div>
-        </div>
+        </div> -->
 
         {{-- ═══ Stats strip ═══ --}}
-        <div class="mb-16 lg:mb-20 grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]"
+        <!-- <div class="mb-16 lg:mb-20 grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]"
             data-reveal data-reveal-delay="0.05">
             @foreach ($stats as $s)
                 <div class="bg-[#0d0420]/60 backdrop-blur-xl px-5 py-6 lg:px-6 lg:py-7 flex flex-col">
@@ -262,7 +262,7 @@ Studio tool plates + stats strip + streaming type marquees on brand stage
                     <span class="mt-2 text-[10px] font-mono uppercase tracking-[0.2em] text-white/45">{{ $s['l'] }}</span>
                 </div>
             @endforeach
-        </div>
+        </div> -->
 
         {{-- ═══ Streaming type marquees — full bleed ═══ --}}
         <div class="space-y-3 lg:space-y-4">

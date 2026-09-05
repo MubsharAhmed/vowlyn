@@ -7,8 +7,59 @@ hover-tilt on the avatar plates for a tactile feel.
 ============================================================================ --}}
 @extends('layouts.app')
 
-@section('title', 'About — Vowlyn')
-@section('description', 'Meet Junaid Swati and the eight-person Vowlyn studio — the principal, the technical lead, and the specialists who ship every brand we direct.')
+@section('title', 'About Vowlyn — A Senior Software Development Studio')
+@section('description', 'Meet Vowlyn: an eight-person software development studio led by founder Junaid Swati, with in-house engineering, studio, and growth pods directing eight brands end-to-end.')
+@section('canonical', 'https://vowlyn.com/about')
+@section('og_type', 'profile')
+@section('og_title', 'About Vowlyn — A Senior Software Development Studio')
+@section('og_description', 'An eight-person software studio led by Junaid Swati — engineering, studio, and growth under one roof.')
+@section('twitter_title', 'About Vowlyn — A Senior Software Development Studio')
+@section('twitter_description', 'An eight-person software studio led by Junaid Swati — engineering, studio, and growth under one roof.')
+
+@push('head')
+    {{-- AboutPage + Organization — the highest-value E-E-A-T schema on the site --}}
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@type": "AboutPage",
+      "url": "https://vowlyn.com/about",
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://vowlyn.com/#organization",
+        "name": "Vowlyn",
+        "description": "A senior software development studio of eight specialists — engineering, studio, and growth — directing eight brands end-to-end.",
+        "foundingDate": "2016",
+        "numberOfEmployees": "8",
+        "founder": {
+          "@type": "Person",
+          "name": "Junaid Swati",
+          "jobTitle": "Founder & Project Director"
+        },
+        "employee": [
+          { "@type": "Person", "name": "Mubashar Ahmed Khan", "jobTitle": "Technical Team Lead · Web Developer" },
+          { "@type": "Person", "name": "Asif", "jobTitle": "Full-Stack Engineer" },
+          { "@type": "Person", "name": "Atif", "jobTitle": "Frontend Engineer" },
+          { "@type": "Person", "name": "Asjid Rouf", "jobTitle": "Graphic & Motion Designer" },
+          { "@type": "Person", "name": "Yoruu", "jobTitle": "Video Editor" },
+          { "@type": "Person", "name": "Yahya Rasheed", "jobTitle": "SEO & Content Strategist" },
+          { "@type": "Person", "name": "Ayesha Younas", "jobTitle": "Research & Lead-Gen Specialist" }
+        ]
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Who is Junaid Swati?", "acceptedAnswer": { "@type": "Answer", "text": "Junaid Swati is the founder of Vowlyn, leading delivery and stakeholder strategy across every engagement. Over a decade he has helped build and direct eight brands." } },
+        { "@type": "Question", "name": "How big is the Vowlyn team?", "acceptedAnswer": { "@type": "Answer", "text": "Eight specialists across three in-house pods (engineering, studio, and growth) with no outsourced contractors and no middle-management layer." } },
+        { "@type": "Question", "name": "Is Vowlyn a real studio with a real team?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Vowlyn is a focused room of eight named specialists who own design, code, motion, and growth for every brand it directs." } },
+        { "@type": "Question", "name": "Where is Vowlyn based and who does it serve?", "acceptedAnswer": { "@type": "Answer", "text": "Vowlyn began serving local Burlington brands and now directs work across North America, Europe, and the MENA region." } }
+      ]
+    }
+    </script>
+@endpush
 
 @php
     $founder = [
@@ -17,7 +68,7 @@ hover-tilt on the avatar plates for a tactile feel.
         'last'   => 'Swati',
         'init'   => 'JS',
         'role'   => 'Project Management · SME Digital Solution Partner',
-        'bio'    => "I lead delivery and stakeholder strategy across every Vowlyn engagement. Over the past decade I've helped build and direct eight brands — from boutique studios to multi-city buying groups — the connective tissue that keeps strategy, design, and engineering pointed at the same outcome.",
+        'bio'    => "Vowlyn is a senior software development studio of eight specialists — engineering, studio, and growth — and I lead delivery across every engagement. Over the past decade I've helped build and direct eight brands, from boutique studios to multi-city buying groups, keeping strategy, design, and engineering pointed at the same outcome.",
         'brands' => [
             'Vowlyn', 'Vowlyn Weddings', 'Burlington Painters', 'Arian Rugs',
             'United Buying Group', 'Ontario Buying Group', 'Alpha Buying Association', 'Square 21 Marketing',
@@ -172,7 +223,7 @@ hover-tilt on the avatar plates for a tactile feel.
         <div class="container-vw relative">
             {{-- Masthead strip --}}
             <div class="flex items-center gap-4 mb-12 lg:mb-16" data-reveal>
-                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">§ 01 · The Principal</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">The Principal</span>
                 <span class="h-px flex-1 bg-on-surface/15"></span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">Burlington, ON · Est. 2016</span>
             </div>
@@ -247,6 +298,14 @@ hover-tilt on the avatar plates for a tactile feel.
                         {{ $founder['bio'] }}
                     </p>
 
+                    {{-- Quick Answer (GEO) --}}
+                    <x-quick-answer class="mt-8 max-w-2xl" data-reveal data-reveal-delay="0.15">
+                        Vowlyn is an eight-person software development studio led by founder Junaid Swati. It runs
+                        three in-house pods — engineering, studio, and growth — with no outsourced contractors and no
+                        middle-management layer. The same team owns design, code, motion, and growth for every brand
+                        it directs, from kickoff to maintenance.
+                    </x-quick-answer>
+
                     {{-- Brand roster --}}
                     <div class="mt-10">
                         <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted mb-3">Brands under direction</p>
@@ -261,7 +320,7 @@ hover-tilt on the avatar plates for a tactile feel.
                     </div>
 
                     <div class="mt-10 flex flex-wrap items-center gap-4">
-                        <a href="{{ url('/#contact') }}" class="btn-primary">Book a 30-min discovery</a>
+                        <a href="https://calendly.com/junaidswati/new-meeting" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a 30-min discovery</a>
                         <a href="#crew" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-[0.18em] text-on-surface hover:text-primary-700 transition-colors">
                             Meet the crew
                             <span aria-hidden="true">↓</span>
@@ -275,7 +334,7 @@ hover-tilt on the avatar plates for a tactile feel.
     {{-- ════════════════════════════════════════════════════════════════════
          § 02 · THE CREW — Departments with org hierarchy
          ──────────────────────────────────────────────────────────────────── --}}
-    <section id="crew" class="relative bg-surface-ink text-white py-24 lg:py-32 overflow-hidden grain">
+    <section id="crew" class="relative bg-brand-stage text-white py-24 lg:py-32 overflow-hidden grain">
         {{-- Ambient blobs --}}
         <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
             <div class="absolute top-1/4 -left-32 size-[24rem] rounded-full bg-primary-700/30 blur-3xl"></div>
@@ -285,18 +344,18 @@ hover-tilt on the avatar plates for a tactile feel.
         <div class="container-vw relative">
             {{-- Section masthead --}}
             <div class="flex items-center gap-4 mb-10" data-reveal>
-                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-white/55 whitespace-nowrap">§ 02 · The Crew</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-white/55 whitespace-nowrap">The Crew</span>
                 <span class="h-px flex-1 bg-white/15"></span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-white/55 whitespace-nowrap">07 specialists · 03 departments</span>
             </div>
 
             <div class="flex items-end justify-between mb-16 flex-wrap gap-6">
                 <h2 class="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-tight max-w-3xl" data-reveal>
-                    A flat room with a<br/>
+                    A flat studio with a<br/>
                     <span class="italic font-medium text-white/65">clear chain of command.</span>
                 </h2>
                 <p class="text-white/65 max-w-sm leading-relaxed" data-reveal data-reveal-delay="0.08">
-                    Engineering reports into a single technical lead. Studio and growth run as flat pods. No middle layer between you and the people shipping your work.
+                    Engineering reports into a single technical lead. Studio and growth run as flat pods. No middle layer sits between you and the people shipping your work — every project passes through this room, no outsourced contractors-of-the-week.
                 </p>
             </div>
 
@@ -321,7 +380,7 @@ hover-tilt on the avatar plates for a tactile feel.
                     {{-- LEAD CARD (full width, larger) --}}
                     @php $L = $engineering['lead']; @endphp
                     <div class="relative" data-stagger-item>
-                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-ink p-5 group/lead crew-card" data-tilt>
+                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-[#160828]/70 backdrop-blur-xl p-5 group/lead crew-card" data-tilt>
                             {{-- Lead badge --}}
                             <span class="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-primary-500 to-blush-500 text-white text-[9px] font-mono uppercase tracking-[0.22em]">
                                 ★ Lead
@@ -364,7 +423,7 @@ hover-tilt on the avatar plates for a tactile feel.
                     <div class="grid sm:grid-cols-2 gap-4">
                         @foreach ($engineering['team'] as $i => $m)
                             <div class="relative" data-stagger-item style="animation-delay: {{ ($i + 1) * 80 }}ms;">
-                                <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-ink p-5 group/card crew-card h-full" data-tilt>
+                                <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-[#160828]/70 backdrop-blur-xl p-5 group/card crew-card h-full" data-tilt>
                                     <div aria-hidden="true" class="absolute inset-0 plate-grid opacity-15"></div>
                                     <div aria-hidden="true" class="absolute -top-10 -right-10 size-32 rounded-full blur-3xl opacity-30 transition-opacity duration-500 group-hover/card:opacity-60"
                                          style="background: radial-gradient(circle, {{ $m['tone'][0] }}, transparent 70%);"></div>
@@ -410,7 +469,7 @@ hover-tilt on the avatar plates for a tactile feel.
                             <div class="grid sm:grid-cols-2 gap-4">
                                 @foreach ($dept['people'] as $i => $m)
                                     <div class="relative" data-stagger-item style="animation-delay: {{ $i * 80 }}ms;">
-                                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-surface-ink p-5 group/card crew-card h-full" data-tilt>
+                                        <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-[#160828]/70 backdrop-blur-xl p-5 group/card crew-card h-full" data-tilt>
                                             <div aria-hidden="true" class="absolute inset-0 plate-grid opacity-15"></div>
                                             <div aria-hidden="true" class="absolute -top-10 -right-10 size-32 rounded-full blur-3xl opacity-30 transition-opacity duration-500 group-hover/card:opacity-60"
                                                  style="background: radial-gradient(circle, {{ $m['tone'][0] }}, transparent 70%);"></div>
@@ -469,7 +528,7 @@ hover-tilt on the avatar plates for a tactile feel.
         <div class="container-vw relative">
             {{-- Section masthead --}}
             <div class="flex items-center gap-4 mb-10" data-reveal>
-                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">§ 03 · Featured Specialists</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">Featured Specialists</span>
                 <span class="h-px flex-1 bg-on-surface/15"></span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap" x-text="`Profile 0${active + 1} / 0${total}`">Profile 01 / 07</span>
             </div>
@@ -485,17 +544,17 @@ hover-tilt on the avatar plates for a tactile feel.
             </div>
 
             {{-- ── Picker + Profile grid ─────────────────────────────── --}}
-            <div class="grid lg:grid-cols-[280px_1fr] gap-6 lg:gap-10">
+            <div class="grid min-w-0 lg:grid-cols-[280px_minmax(0,1fr)] gap-6 lg:gap-10">
 
                 {{-- LEFT · Sticky member picker --}}
-                <aside class="lg:sticky lg:top-28 lg:self-start" data-reveal>
+                <aside class="min-w-0 lg:sticky lg:top-28 lg:self-start" data-reveal>
                     {{-- Mobile horizontal scroll, Desktop vertical stack --}}
-                    <div class="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-3 lg:pb-0 -mx-4 lg:mx-0 px-4 lg:px-0 snap-x lg:snap-none">
+                    <div class="flex w-full max-w-full lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-3 lg:pb-0 snap-x snap-mandatory lg:snap-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                         @foreach ($specialists as $i => $s)
                             <button type="button"
                                     @click="active = {{ $i }}"
                                     :class="active === {{ $i }} ? 'border-on-surface bg-on-surface text-white' : 'border-on-surface/15 bg-white/60 text-on-surface hover:border-on-surface/35'"
-                                    class="group relative flex items-center gap-3 px-3 py-2.5 rounded-2xl border backdrop-blur-sm transition-all duration-300 shrink-0 lg:shrink min-w-[16rem] lg:min-w-0 snap-start text-left">
+                                    class="group relative flex items-center gap-3 px-3 py-2.5 rounded-2xl border backdrop-blur-sm transition-all duration-300 shrink-0 lg:shrink w-[calc(100%-2rem)] sm:w-auto min-w-0 lg:w-full snap-start text-left">
                                 {{-- Avatar --}}
                                 <span class="grid place-items-center size-10 rounded-xl text-white font-display font-bold text-sm shadow-md shrink-0"
                                       style="background: linear-gradient(135deg, {{ $s['tone'][0] }}, {{ $s['tone'][1] }});">
@@ -519,7 +578,7 @@ hover-tilt on the avatar plates for a tactile feel.
                 </aside>
 
                 {{-- RIGHT · Profile detail --}}
-                <div class="relative min-h-[36rem]">
+                <div class="relative min-w-0 min-h-[36rem]">
                     @foreach ($specialists as $i => $s)
                         <article x-show="active === {{ $i }}"
                                  x-cloak
@@ -527,9 +586,9 @@ hover-tilt on the avatar plates for a tactile feel.
                                  x-transition:enter-start="opacity-0 translate-y-4"
                                  x-transition:enter-end="opacity-100 translate-y-0"
                                  class="relative rounded-3xl overflow-hidden border border-on-surface/10 bg-white shadow-[0_30px_80px_-30px_rgba(15,15,32,0.35)]">
-                            <div class="grid md:grid-cols-[1fr_1.4fr]">
+                            <div class="grid min-w-0 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
                                 {{-- Portrait pane --}}
-                                <div class="relative aspect-square md:aspect-auto md:min-h-[34rem] overflow-hidden"
+                                <div class="relative h-72 sm:h-80 md:h-auto md:min-h-[34rem] overflow-hidden"
                                      style="background: linear-gradient(160deg, {{ $s['tone'][0] }}, {{ $s['tone'][1] }});">
                                     <div aria-hidden="true" class="absolute inset-0 plate-grid opacity-20 mix-blend-overlay"></div>
                                     <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
@@ -551,7 +610,7 @@ hover-tilt on the avatar plates for a tactile feel.
 
                                     {{-- Initial monogram (swap to <img> later) --}}
                                     <div class="absolute inset-0 grid place-items-center">
-                                        <span class="font-display font-bold text-[10rem] md:text-[14rem] leading-none text-white/95 select-none">{{ $s['init'] }}</span>
+                                        <span class="font-display font-bold text-[7rem] sm:text-[9rem] md:text-[14rem] leading-none text-white/95 select-none">{{ $s['init'] }}</span>
                                     </div>
 
                                     {{-- Bottom signature --}}
@@ -570,7 +629,7 @@ hover-tilt on the avatar plates for a tactile feel.
                                 </div>
 
                                 {{-- Editorial detail pane --}}
-                                <div class="p-7 lg:p-10 flex flex-col">
+                                <div class="min-w-0 p-5 sm:p-7 lg:p-10 flex flex-col">
                                     <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-700 mb-3">Profile · 0{{ $i + 1 }}</p>
 
                                     <h3 class="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[0.95] tracking-tight text-on-surface">
@@ -580,13 +639,13 @@ hover-tilt on the avatar plates for a tactile feel.
                                         @endif
                                     </h3>
 
-                                    <p class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-on-surface text-white text-[10px] font-mono uppercase tracking-[0.18em] self-start">
+                                    <p class="mt-4 inline-flex max-w-full items-center gap-2 px-3 py-1.5 rounded-2xl sm:rounded-full bg-on-surface text-white text-[10px] font-mono uppercase tracking-[0.14em] sm:tracking-[0.18em] self-start leading-relaxed">
                                         <span class="size-1.5 rounded-full bg-primary-300 inline-block"></span>
                                         {{ $s['role'] }}
                                     </p>
 
                                     {{-- Stat row --}}
-                                    <div class="mt-6 grid grid-cols-3 gap-3">
+                                    <div class="mt-6 grid grid-cols-1 min-[390px]:grid-cols-3 gap-2 sm:gap-3">
                                         <div class="rounded-xl border border-on-surface/10 bg-mesh-light/60 px-3 py-3">
                                             <p class="font-display text-2xl text-on-surface leading-none">{{ $s['years'] }}</p>
                                             <p class="font-mono text-[9px] uppercase tracking-[0.18em] text-on-surface-muted mt-1.5">Years exp.</p>
@@ -657,7 +716,7 @@ hover-tilt on the avatar plates for a tactile feel.
     <section class="relative bg-mesh-light py-20 lg:py-24 overflow-hidden">
         <div class="container-vw mb-10">
             <div class="flex items-center gap-4" data-reveal>
-                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">§ 04 · Active Directions</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">Active Directions</span>
                 <span class="h-px flex-1 bg-on-surface/15"></span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-on-surface-muted whitespace-nowrap">08 brands</span>
             </div>
@@ -683,7 +742,7 @@ hover-tilt on the avatar plates for a tactile feel.
     {{-- ════════════════════════════════════════════════════════════════════
          § 05 · TIMELINE — A decade in six chapters (scroll-driven spine)
          ──────────────────────────────────────────────────────────────────── --}}
-    <section class="relative bg-surface-ink text-white py-24 lg:py-32 overflow-hidden grain">
+    <section class="relative bg-brand-stage text-white py-24 lg:py-32 overflow-hidden grain">
         <div aria-hidden="true" class="absolute inset-0 pointer-events-none">
             <div class="absolute top-1/3 -left-32 size-[26rem] rounded-full bg-primary-700/25 blur-3xl"></div>
             <div class="absolute bottom-1/4 -right-24 size-[22rem] rounded-full bg-blush-500/15 blur-3xl"></div>
@@ -691,7 +750,7 @@ hover-tilt on the avatar plates for a tactile feel.
 
         <div class="container-vw relative max-w-4xl">
             <div class="flex items-center gap-4 mb-10" data-reveal>
-                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-white/55 whitespace-nowrap">§ 05 · The Timeline</span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-white/55 whitespace-nowrap">The Timeline</span>
                 <span class="h-px flex-1 bg-white/15"></span>
                 <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-white/55 whitespace-nowrap">10 years · 06 chapters</span>
             </div>
@@ -725,7 +784,55 @@ hover-tilt on the avatar plates for a tactile feel.
     </section>
 
     {{-- ════════════════════════════════════════════════════════════════════
-         § 06 · CLOSING CTA
+         § 06 · ABOUT FAQ + KEY TAKEAWAYS (AEO — SEO rewrite, 2026)
+         ──────────────────────────────────────────────────────────────────── --}}
+    @php
+        $aboutFaqs = [
+            [
+                'q' => 'Who is Junaid Swati?',
+                'a' => 'Junaid Swati is the founder of Vowlyn, leading delivery and stakeholder strategy across every engagement. Over a decade he has helped build and direct eight brands.',
+            ],
+            [
+                'q' => 'How big is the Vowlyn team?',
+                'a' => 'Eight specialists across three in-house pods — engineering, studio, and growth — with no outsourced contractors and no middle-management layer.',
+            ],
+            [
+                'q' => 'Is Vowlyn a real studio with a real team?',
+                'a' => 'Yes. Vowlyn is a focused room of eight named specialists who own design, code, motion, and growth for every brand it directs, from kickoff to maintenance.',
+            ],
+            [
+                'q' => 'Where is Vowlyn based and who does it serve?',
+                'a' => 'Vowlyn began serving local Burlington brands and now directs work across North America, Europe, and the MENA region.',
+            ],
+        ];
+    @endphp
+    <section aria-labelledby="paa-about" class="section-vw bg-surface relative overflow-hidden">
+        <div class="container-vw relative">
+            <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 lg:gap-16 items-start">
+                <div data-reveal>
+                    <span class="eyebrow !text-primary-700">People also ask</span>
+                    <h2 id="paa-about" class="headline-display text-3xl lg:text-4xl mt-3 text-slate-900">
+                        About Vowlyn — common questions.
+                    </h2>
+                    <p class="text-on-surface-muted mt-4 leading-relaxed">
+                        The entity answers, plainly — who runs the studio, how big it is, and where it works.
+                    </p>
+
+                    <x-key-takeaways class="mt-8" :items="[
+                        'Vowlyn is an eight-person software development studio founded and led by Junaid Swati.',
+                        'Three in-house pods: engineering, studio, and growth — no outsourced contractors.',
+                        '10+ years directing eight brands, from local services to multi-city buying groups.',
+                        'The same team owns design, code, motion, and growth end-to-end.',
+                    ]" />
+                </div>
+
+                <x-faq-accordion :items="$aboutFaqs" />
+            </div>
+        </div>
+    </section>
+
+    {{-- ════════════════════════════════════════════════════════════════════
+         § 07 · CLOSING CTA
          ──────────────────────────────────────────────────────────────────── --}}
     <section class="relative bg-surface py-24 lg:py-32 overflow-hidden">
         <div class="container-vw max-w-4xl text-center">
@@ -738,7 +845,7 @@ hover-tilt on the avatar plates for a tactile feel.
                 A 30-minute call. No pitch deck. We'll tell you whether we're the right room for what you're building.
             </p>
             <div class="mt-10 flex items-center justify-center gap-4 flex-wrap" data-reveal data-reveal-delay="0.15">
-                <a href="{{ url('/#contact') }}" class="btn-primary">Book a 30-min discovery</a>
+                <a href="https://calendly.com/junaidswati/new-meeting" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a 30-min discovery</a>
                 <a href="{{ route('portfolio') }}" class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-[0.18em] text-on-surface hover:text-primary-700 transition-colors">
                     See what we've shipped →
                 </a>

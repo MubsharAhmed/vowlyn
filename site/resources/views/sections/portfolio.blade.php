@@ -4,65 +4,96 @@ Exo-Ape-inspired asymmetric image collage. Cards 2 & 4 parallax slowly while
 cards 1 & 3 are anchored, giving the illusion of depth on scroll.
 ============================================================================ --}}
 @php
-    // Stock placeholder hero shots — swap with real project shots later.
-    // (Stable Unsplash IDs used elsewhere on the site.)
     $projects = [
         [
-            'category' => 'Service Website',
+            'category' => 'B2B Distribution',
             'num' => '01',
-            'name' => 'Burloak Painting',
-            'desc' => 'Modern site for commercial & residential painting with strong local-lead generation.',
-            'tags' => ['Service Platform', 'Local SEO', 'Lead Conversion'],
-            'url' => 'https://burlingtonspainters.com/',
-            'image' => 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1400&q=80',
-            'alt' => 'Painter rolling fresh paint on an interior wall',
-            // Layout
+            'name' => 'Moventra Distribution',
+            'desc' => 'A streamlined wholesale experience connecting global electronics inventory with retailers across international markets.',
+            'tags' => ['B2B Commerce', 'Wholesale', 'Lead Generation'],
+            'url' => 'https://www.moventradistribution.com/',
+            'image' => 'https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1400&q=80',
+            'alt' => 'Moventra Distribution wholesale electronics website project',
             'span' => 'lg:col-span-7',
-            'aspect' => 'aspect-[5/6]', // tall
+            'aspect' => 'aspect-[5/6]',
+            'offset' => '',
             'parallax' => false,
             'tone' => 'lavender',
         ],
         [
             'category' => 'E-Commerce Platform',
             'num' => '02',
-            'name' => 'Arian Rugs',
-            'desc' => 'Premium rug commerce with refined browsing and checkout.',
-            'tags' => ['E-commerce', 'Catalog UX', 'Conversion Design'],
-            'url' => 'https://arianrugs.com/',
-            'image' => 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-            'alt' => 'Persian rug detail with warm tones',
+            'name' => 'Meljori Jewellery',
+            'desc' => 'A refined jewellery storefront designed to make product discovery feel considered, premium, and effortless.',
+            'tags' => ['Jewellery', 'E-Commerce', 'Product UX'],
+            'url' => 'https://www.meljorijewellery.ca/',
+            'image' => 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80',
+            'alt' => 'Meljori Jewellery e-commerce website project',
             'span' => 'lg:col-span-5',
-            'aspect' => 'aspect-[4/3] lg:aspect-[4/5]', // shorter — floater
+            'aspect' => 'aspect-[4/3] lg:aspect-[4/5]',
+            'offset' => 'lg:mt-16',
             'parallax' => '0.12',
             'tone' => 'blush',
         ],
         [
-            'category' => 'Operations Platform',
+            'category' => 'IT Services',
             'num' => '03',
-            'name' => 'Ontario Buying Group',
-            'desc' => 'Multi-store purchasing & dispatch system for operational scale.',
-            'tags' => ['B2B SaaS', 'Dispatch Workflows', 'Multi-store Ops'],
-            'url' => 'https://ontariobuyinggroup.com/',
-            'image' => 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80',
-            'alt' => 'Operations dashboard on a laptop',
+            'name' => 'IT Bridges',
+            'desc' => 'A clear, credible digital presence that turns complex technology services into an easy path to the right solution.',
+            'tags' => ['IT Consulting', 'B2B Website', 'Service UX'],
+            'url' => 'https://itbridges.ca/',
+            'image' => 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80',
+            'alt' => 'IT Bridges technology services website project',
             'span' => 'lg:col-span-5',
             'aspect' => 'aspect-[4/3] lg:aspect-[4/5]',
+            'offset' => '',
             'parallax' => false,
             'tone' => 'ink',
         ],
         [
-            'category' => 'Single Product E-Commerce',
+            'category' => 'E-Commerce Platform',
             'num' => '04',
-            'name' => 'Lumea',
-            'desc' => 'Conversion-focused single-product store with a streamlined buying journey.',
-            'tags' => ['Single Product Store', 'E-commerce', 'Conversion Funnel'],
-            'url' => 'https://lumea.pk/',
-            'image' => 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1400&q=80',
-            'alt' => 'Minimal product photography on neutral background',
+            'name' => 'Persian Designer Rugs',
+            'desc' => 'An elegant catalogue experience built to present distinctive rug collections with clarity and visual depth.',
+            'tags' => ['Rug Catalogue', 'E-Commerce', 'Visual Design'],
+            'url' => 'https://persiandesignerrugs.ca/',
+            'image' => 'https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=1400&q=80',
+            'alt' => 'Persian Designer Rugs e-commerce website project',
             'span' => 'lg:col-span-7',
             'aspect' => 'aspect-[5/6]',
+            'offset' => 'lg:-mt-12',
             'parallax' => '0.10',
             'tone' => 'lavender',
+        ],
+        [
+            'category' => 'E-Commerce Platform',
+            'num' => '05',
+            'name' => 'Arian Rugs',
+            'desc' => 'A high-performing rug catalogue and commerce platform shaped around discovery, trust, and conversion.',
+            'tags' => ['E-Commerce', 'Catalog UX', 'Organic Growth'],
+            'url' => 'https://arianrugs.com/',
+            'image' => 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=80',
+            'alt' => 'Arian Rugs e-commerce store built by Vowlyn',
+            'span' => 'lg:col-span-7',
+            'aspect' => 'aspect-[5/6]',
+            'offset' => '',
+            'parallax' => false,
+            'tone' => 'blush',
+        ],
+        [
+            'category' => 'Service Website',
+            'num' => '06',
+            'name' => 'Burloak Painting',
+            'desc' => 'A local-service website designed to turn residential and commercial painting searches into qualified enquiries.',
+            'tags' => ['Service Platform', 'Local SEO', 'Lead Conversion'],
+            'url' => 'https://burlingtonspainters.com/',
+            'image' => 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1200&q=80',
+            'alt' => 'Burloak Painting service website project built by Vowlyn',
+            'span' => 'lg:col-span-5',
+            'aspect' => 'aspect-[4/3] lg:aspect-[4/5]',
+            'offset' => 'lg:mt-16',
+            'parallax' => '0.12',
+            'tone' => 'ink',
         ],
     ];
 @endphp
@@ -74,17 +105,20 @@ cards 1 & 3 are anchored, giving the illusion of depth on scroll.
         <div class="grid lg:grid-cols-[1fr_1fr] gap-10 mb-14 lg:mb-20 items-end">
             <div>
                 <div class="eyebrow-row mb-5" data-reveal>
-                    <span class="eyebrow">04 / Portfolio</span>
+                    <span class="eyebrow">Portfolio</span>
                 </div>
                 <h2 class="headline-display text-4xl sm:text-5xl lg:text-6xl text-slate-900" data-reveal
                     data-reveal-delay="0.05">
-                    Real Projects,<br /><span class="text-brand-gradient">Measurable Outcomes.</span>
+                    Real Software Projects,<br /><span class="text-brand-gradient">Measurable Outcomes.</span>
                 </h2>
             </div>
             <p class="text-on-surface/65 text-lg leading-relaxed max-w-md lg:justify-self-end" data-reveal
                 data-reveal-delay="0.12">
-                A snapshot of the digital platforms we have designed and engineered for businesses across services,
-                commerce, and operations.
+                Every project below is a live product — web apps, e-commerce platforms, and operations systems
+                engineered by our studio and measured by results, not screenshots.
+                <a href="{{ route('portfolio') }}" class="inline-flex items-center gap-1.5 mt-3 text-primary-700 font-medium underline decoration-primary-300 underline-offset-4 hover:decoration-primary-600 transition">
+                    Browse the full portfolio <i data-lucide="arrow-up-right" class="size-4"></i>
+                </a>
             </p>
         </div>
 
@@ -98,7 +132,7 @@ cards 1 & 3 are anchored, giving the illusion of depth on scroll.
                    data-stagger-item
                    @if ($p['parallax']) data-parallax="{{ $p['parallax'] }}" @endif
                    class="project-card group relative {{ $p['span'] }} block rounded-3xl overflow-hidden
-                          {{ $i === 1 ? 'lg:mt-16' : '' }} {{ $i === 3 ? 'lg:-mt-12' : '' }}">
+                          {{ $p['offset'] }}">
 
                     {{-- Image well --}}
                     <div class="relative w-full {{ $p['aspect'] }} overflow-hidden rounded-3xl
@@ -110,7 +144,7 @@ cards 1 & 3 are anchored, giving the illusion of depth on scroll.
                         {{-- gradient scrim for text legibility --}}
                         <div aria-hidden="true"
                              class="absolute inset-0 bg-gradient-to-t
-                                    {{ $p['tone'] === 'ink' ? 'from-black/80 via-black/20 to-transparent' : 'from-slate-900/80 via-slate-900/20 to-transparent' }}">
+                                    {{ $p['tone'] === 'ink' ? 'from-[#0d0420]/85 via-[#0d0420]/25 to-transparent' : 'from-[#160a2c]/80 via-[#160a2c]/20 to-transparent' }}">
                         </div>
 
                         {{-- top-left eyebrow chip --}}

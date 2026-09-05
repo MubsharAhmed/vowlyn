@@ -1,7 +1,7 @@
 {{-- ============================================================================
 FOOTER — Dark stage with logo (white wordmark), nav, contact, socials
 ============================================================================ --}}
-<footer class="bg-surface-ink text-on-inverse relative overflow-hidden grain">
+<footer class="bg-brand-stage text-on-inverse relative overflow-hidden grain">
     {{-- Decorative gradient blob --}}
     <div aria-hidden="true"
         class="absolute -top-40 -left-20 size-[28rem] rounded-full bg-primary-700/30 blur-3xl pointer-events-none">
@@ -43,8 +43,8 @@ FOOTER — Dark stage with logo (white wordmark), nav, contact, socials
             <div>
                 <p class="text-white/45 text-xs font-mono uppercase tracking-[0.16em] mb-4">Services</p>
                 <ul class="space-y-2.5 text-sm">
-                    @foreach (['Modern Web Apps', 'Mobile Engineering', 'AI Integration', 'Scalable SaaS', 'Enterprise Security', 'SEO'] as $s)
-                        <li><a href="{{ url('/#services') }}" class="text-white/75 hover:text-white transition">{{ $s }}</a>
+                    @foreach (['Modern Web Apps', 'Mobile Engineering', 'AI Integration', 'Scalable SaaS', 'Enterprise Security', 'Cloud DevOps'] as $s)
+                        <li><a href="{{ route('services') }}" class="text-white/75 hover:text-white transition">{{ $s }}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -54,14 +54,16 @@ FOOTER — Dark stage with logo (white wordmark), nav, contact, socials
                 <p class="text-white/45 text-xs font-mono uppercase tracking-[0.16em] mb-4">Company</p>
                 <ul class="space-y-2.5 text-sm">
                     @foreach ([
-                            ['About', '#about'],
-                            ['Process', '#process'],
-                            ['Portfolio', '#projects'],
-                            ['Why Us', '#why-us'],
-                            ['Testimonials', '#testimonials'],
-                            ['Contact', '#contact'],
+                            ['About', route('about')],
+                            ['Process', url('/#process')],
+                            ['Portfolio', route('portfolio')],
+                            ['Content Creation', route('content-creation')],
+                            ['Journal', route('blog.index')],
+                            ['Why Us', route('why-us')],
+                            ['Testimonials', url('/#testimonials')],
+                            ['Contact', url('/#contact')],
                         ] as [$l, $h])
-                            <li><a href="{{ url('/' . $h) }}" class="text-white/75 hover:text-white transition">{{ $l }}</a></li>
+                            <li><a href="{{ $h }}" class="text-white/75 hover:text-white transition">{{ $l }}</a></li>
                     @endforeach
 
                                                </ul>
@@ -72,8 +74,8 @@ FOOTER — Dark stage with logo (white wordmark), nav, contact, socials
             <div>
                 <p class="text-white/45 text-xs font-mono uppercase tracking-[0.16em] mb-4">Connect</p>
                 <ul class="space-y-2.5 text-sm">
-                    <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><i data-lucide="linkedin" class="size-4"></i> LinkedIn</a></li>
-                    <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><i data-lucide="dribbble" class="size-4"></i> Dribbble</a></li>
+                    <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><span aria-hidden="true" class="grid size-4 place-items-center text-[0.6rem] font-bold leading-none">in</span> LinkedIn</a></li>
+                    <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><span aria-hidden="true" class="grid size-4 place-items-center text-xs leading-none">●</span> Dribbble</a></li>
                     <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><i data-lucide="x" class="size-4"></i> X / Twitter</a></li>
             
                </ul>

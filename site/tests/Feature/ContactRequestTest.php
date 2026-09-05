@@ -17,7 +17,7 @@ final class ContactRequestTest extends TestCase
         $payload = [
             'name' => 'Jane Doe',
             'email' => 'jane@example.com',
-            'company' => 'Acme Co.',
+            'service' => 'saas-development',
             'brief' => 'We need a scalable SaaS platform with admin tooling and modern UI. Help!',
             'website' => '', // honeypot left empty
         ];
@@ -28,6 +28,7 @@ final class ContactRequestTest extends TestCase
         $this->assertDatabaseHas('contact_requests', [
             'email' => 'jane@example.com',
             'name' => 'Jane Doe',
+            'service' => 'saas-development',
             'status' => ContactRequest::STATUS_NEW,
         ]);
 
@@ -59,6 +60,20 @@ final class ContactRequestTest extends TestCase
         ]);
 
         $response->assertInvalid(['website']);
+        $this->assertDatabaseCount('contact_requests', 0);
+    }
+
+    public function test_service_must_be_one_of_the_published_services(): void
+    {
+        $response = $this->from('/#home')->post('/contact', [
+            'name' => 'Jane Doe',
+            'email' => 'jane@example.com',
+            'service' => 'not-a-real-service',
+            'brief' => 'We need help building and launching a new digital product.',
+            'website' => '',
+        ]);
+
+        $response->assertInvalid(['service']);
         $this->assertDatabaseCount('contact_requests', 0);
     }
 }

@@ -12,14 +12,18 @@ final class ContactRequest extends Model
     use HasFactory;
 
     public const STATUS_NEW = 'new';
+
     public const STATUS_REVIEWED = 'reviewed';
+
     public const STATUS_REPLIED = 'replied';
+
     public const STATUS_ARCHIVED = 'archived';
 
     protected $fillable = [
         'name',
         'email',
         'company',
+        'service',
         'brief',
         'ip_address',
         'user_agent',

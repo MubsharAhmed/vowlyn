@@ -4,10 +4,10 @@ WHY US — "Built for Teams That Need Premium Outcomes"
 ============================================================================ --}}
 @php
     $reasons = [
-        ['Senior Product Thinking', 'Every decision aligns with conversion, retention, and long-term product equity.', 'brain-circuit'],
-        ['Design + Engineering Unity', 'A collaborative pipeline that removes friction between visuals and implementation.', 'workflow'],
+        ['Senior Product Thinking', 'Every decision aligns with conversion, retention, and long-term product equity — no juniors learning on your budget.', 'brain-circuit'],
+        ['Design + Engineering Unity', 'One in-house team from first wireframe to production deploy — no handoffs lost between agencies.', 'workflow'],
         ['Fast, Predictable Delivery', 'Milestone-based execution with transparent progress and dependable velocity.', 'timer-reset'],
-        ['Growth-Ready Architecture', 'Platforms designed to handle scale, new features, and enterprise expectations.', 'network'],
+        ['Growth-Ready Architecture', 'Platforms designed to handle scale, new features, and enterprise expectations — code you own, in your repos.', 'network'],
     ];
 @endphp
 
@@ -20,7 +20,7 @@ WHY US — "Built for Teams That Need Premium Outcomes"
         <div class="grid lg:grid-cols-[1fr_1.2fr] gap-10 mb-14 lg:mb-20 items-end">
             <div>
                 <div class="eyebrow-row mb-5" data-reveal>
-                    <span class="eyebrow">05 / Why Vowlyn</span>
+                    <span class="eyebrow">Why Vowlyn</span>
                 </div>
                 <h2 class="headline-display text-4xl sm:text-5xl lg:text-6xl text-slate-900" data-reveal
                     data-reveal-delay="0.05">
@@ -29,8 +29,8 @@ WHY US — "Built for Teams That Need Premium Outcomes"
             </div>
             <p class="text-on-surface/65 text-lg leading-relaxed max-w-lg lg:justify-self-end" data-reveal
                 data-reveal-delay="0.12">
-                We blend strategic product insight with precision engineering so your digital platform becomes a
-                long-term competitive advantage.
+                We blend strategic product insight with precision engineering — a small, senior software development
+                studio where the people who scope your project are the people who ship it.
             </p>
         </div>
 
@@ -57,5 +57,13 @@ WHY US — "Built for Teams That Need Premium Outcomes"
                 </article>
             @endforeach
         </div>
+
+        {{-- Key takeaways (featured-snippet bait — SEO rewrite, 2026) --}}
+        <x-key-takeaways class="mt-10 lg:mt-14 max-w-3xl" :items="[
+            'Vowlyn is a senior-only software development studio — no juniors, no outsourced contractors.',
+            'The team that scopes your project is the team that ships it.',
+            'You own all code and cloud accounts from day one — no lock-in.',
+            'Fixed-fee or flat monthly pricing, with 90 days of post-launch care.',
+        ]" />
     </div>
 </section>

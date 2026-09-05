@@ -8,7 +8,7 @@ animated number watermarks, and an infinite expertise marquee strip.
         [
             'num' => '01',
             'title' => 'Modern Web Apps',
-            'desc' => 'Conversion-focused web platforms engineered for speed, scalability, and premium user experience.',
+            'desc' => 'Conversion-focused, edge-rendered web platforms built with Next.js and headless CMS — SEO-clean, fast, and engineered to scale.',
             'icon' => 'monitor',
             'wide' => true,
             'tags' => ['Next.js', 'React', 'Edge', 'Performance', 'SSR'],
@@ -16,7 +16,7 @@ animated number watermarks, and an infinite expertise marquee strip.
         [
             'num' => '02',
             'title' => 'Mobile Engineering',
-            'desc' => 'Cross-platform and native mobile products that feel intuitive, polished, and built for growth.',
+            'desc' => 'React Native and native iOS/Android apps shipped to both stores from one codebase, with offline-first architecture.',
             'icon' => 'smartphone',
             'wide' => false,
             'tags' => ['iOS', 'Android', 'React Native'],
@@ -24,34 +24,34 @@ animated number watermarks, and an infinite expertise marquee strip.
         [
             'num' => '03',
             'title' => 'AI Integration',
-            'desc' => 'Practical AI systems, automation workflows, and intelligence layers that unlock measurable impact.',
+            'desc' => 'RAG assistants, LLM pipelines, and computer-vision systems wired into your product with measurable ROI.',
             'icon' => 'sparkles',
             'wide' => false,
-            'tags' => ['LLMs', 'Agents', 'Automation'],
+            'tags' => ['LLMs', 'RAG', 'Agents', 'Automation'],
         ],
         [
             'num' => '04',
             'title' => 'Scalable SaaS',
-            'desc' => 'Reliable SaaS architectures with robust APIs, subscription flows, and enterprise-grade foundations.',
+            'desc' => 'Multi-tenant SaaS platforms with subscription billing, RBAC, and observability baked in from day one.',
             'icon' => 'layers',
             'wide' => false,
-            'tags' => ['Multi-tenant', 'Billing', 'APIs'],
+            'tags' => ['Multi-tenant', 'Billing', 'RBAC'],
         ],
         [
             'num' => '05',
             'title' => 'Enterprise Security',
-            'desc' => 'Security-first engineering with hardened infrastructure, governance, and compliance-ready workflows.',
+            'desc' => 'SOC 2-aligned hardening, SSO/SAML, secrets hygiene, and compliance-ready workflows.',
             'icon' => 'shield-check',
             'wide' => true,
-            'tags' => ['SOC 2', 'OAuth 2.0', 'Audits', 'Compliance', 'Zero-trust'],
+            'tags' => ['SOC 2', 'SSO / SAML', 'Audits', 'Compliance', 'Zero-trust'],
         ],
         [
             'num' => '06',
-            'title' => 'SEO',
-            'desc' => 'Technical and content SEO frameworks designed to compound visibility and qualified traffic over time.',
-            'icon' => 'search',
+            'title' => 'Cloud DevOps',
+            'desc' => 'AWS/GCP infrastructure with IaC, CI/CD pipelines, and 24/7 observability — infrastructure that ships itself.',
+            'icon' => 'cloud-cog',
             'wide' => false,
-            'tags' => ['Technical', 'Content', 'Schema'],
+            'tags' => ['AWS', 'IaC', 'CI/CD'],
         ],
     ];
 
@@ -70,19 +70,22 @@ animated number watermarks, and an infinite expertise marquee strip.
         <div class="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-end mb-14 lg:mb-20">
             <div>
                 <div class="eyebrow-row mb-5" data-reveal>
-                    <span class="eyebrow">01 / Services</span>
+                    <span class="eyebrow">Services</span>
                 </div>
                 <h2 class="headline-display text-4xl sm:text-5xl lg:text-6xl text-slate-900" data-reveal
                     data-reveal-delay="0.05">
-                    End-to-End Digital Execution<br />
+                    Software Development Services<br />
                     for <span class="text-brand-gradient">High-Growth Teams</span>
                 </h2>
             </div>
 
             <div class="space-y-5 max-w-md lg:justify-self-end" data-reveal data-reveal-delay="0.12">
                 <p class="text-on-surface/65 text-lg leading-relaxed">
-                    From strategy to scale &mdash; we design and engineer products that combine
-                    performance, intelligence, and premium user experience.
+                    Software development services from one senior studio —
+                    <a href="{{ route('services') }}" class="text-primary-700 font-medium underline decoration-primary-300 underline-offset-4 hover:decoration-primary-600 transition">modern web apps</a>,
+                    mobile engineering, AI integration,
+                    <a href="{{ route('services') }}" class="text-primary-700 font-medium underline decoration-primary-300 underline-offset-4 hover:decoration-primary-600 transition">SaaS platforms</a>,
+                    enterprise security, and cloud DevOps — strategy to launch under one roof.
                 </p>
                 <div class="flex flex-wrap items-center gap-3 pt-1">
                     <a href="#contact"

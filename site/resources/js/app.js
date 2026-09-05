@@ -1,16 +1,164 @@
 /* =============================================================================
    VOWLYN — Front-end bootstrap
    Alpine.js for interactivity · GSAP for scroll-orchestrated reveals
-   Lenis for buttery smooth scroll · Lucide for outlined icons
+   Native scrolling · Lucide for outlined icons
    ========================================================================== */
 
 import Alpine from 'alpinejs';
+import contentVideo from './content-video';
 import collapse from '@alpinejs/collapse';
 import intersect from '@alpinejs/intersect';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from 'lenis';
-import { createIcons, icons } from 'lucide';
+import {
+    Activity,
+    ArrowDown,
+    ArrowDownRight,
+    ArrowRight,
+    ArrowUpRight,
+    BadgeCheck,
+    Bell,
+    BrainCircuit,
+    Bot,
+    Check,
+    CheckCircle2,
+    ChevronDown,
+    ChevronsUpDown,
+    ClipboardCheck,
+    Clock3,
+    Cloud,
+    CloudCog,
+    Code2,
+    Compass,
+    Component,
+    Cpu,
+    CreditCard,
+    FileCode,
+    Gem,
+    GitBranch,
+    Gauge,
+    Globe,
+    Handshake,
+    KeyRound,
+    Layers,
+    LayoutGrid,
+    LayoutPanelTop,
+    List,
+    Loader2,
+    Lock,
+    LockKeyhole,
+    Menu,
+    MessageSquare,
+    Monitor,
+    Network,
+    PackageCheck,
+    PencilRuler,
+    Pause,
+    Play,
+    PlayCircle,
+    Plus,
+    Plug,
+    Quote,
+    ReceiptText,
+    Rocket,
+    ScanEye,
+    Search,
+    Send,
+    ShieldCheck,
+    ShoppingBag,
+    SlidersHorizontal,
+    Smartphone,
+    Sparkles,
+    Star,
+    TabletSmartphone,
+    Timer,
+    TimerReset,
+    TrendingUp,
+    UsersRound,
+    Volume2,
+    VolumeX,
+    WifiOff,
+    Workflow,
+    X,
+    Zap,
+    createIcons,
+} from 'lucide';
+
+// Import only the icons rendered by this site. Importing `icons` from Lucide
+// pulls the complete library into the entry chunk, even though most pages use
+// only a small subset of it.
+const siteIcons = {
+    Activity,
+    ArrowDown,
+    ArrowDownRight,
+    ArrowRight,
+    ArrowUpRight,
+    BadgeCheck,
+    Bell,
+    BrainCircuit,
+    Bot,
+    Check,
+    CheckCircle2,
+    ChevronDown,
+    ChevronsUpDown,
+    ClipboardCheck,
+    Clock3,
+    Cloud,
+    CloudCog,
+    Code2,
+    Compass,
+    Component,
+    Cpu,
+    CreditCard,
+    FileCode,
+    Gem,
+    GitBranch,
+    Gauge,
+    Globe,
+    Handshake,
+    KeyRound,
+    Layers,
+    LayoutGrid,
+    LayoutPanelTop,
+    List,
+    Loader2,
+    Lock,
+    LockKeyhole,
+    Menu,
+    MessageSquare,
+    Monitor,
+    Network,
+    PackageCheck,
+    PencilRuler,
+    Pause,
+    Play,
+    PlayCircle,
+    Plus,
+    Plug,
+    Quote,
+    ReceiptText,
+    Rocket,
+    ScanEye,
+    Search,
+    Send,
+    ShieldCheck,
+    ShoppingBag,
+    SlidersHorizontal,
+    Smartphone,
+    Sparkles,
+    Star,
+    TabletSmartphone,
+    Timer,
+    TimerReset,
+    TrendingUp,
+    UsersRound,
+    Volume2,
+    VolumeX,
+    WifiOff,
+    Workflow,
+    X,
+    Zap,
+};
 
 /* -------- Alpine -------------------------------------------------------- */
 window.Alpine = Alpine;
@@ -20,24 +168,17 @@ Alpine.plugin(intersect);
 /* -------- GSAP --------------------------------------------------------- */
 gsap.registerPlugin(ScrollTrigger);
 
-/* -------- Lenis smooth scroll (respects reduced motion) ---------------- */
+/* -------- Motion preferences ------------------------------------------- */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isConstrainedDevice = Boolean(
+    (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4)
+    || (navigator.deviceMemory && navigator.deviceMemory <= 4)
+    || navigator.connection?.saveData
+);
+const useHeavyMotion = !prefersReducedMotion && !isConstrainedDevice;
 
-let lenis = null;
-if (!prefersReducedMotion) {
-    lenis = new Lenis({
-        duration: 1.15,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        wheelMultiplier: 0.95,
-    });
-
-    lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-} else {
-    document.documentElement.classList.add('no-lenis');
+if (isConstrainedDevice) {
+    document.documentElement.classList.add('motion-lite');
 }
 
 /* -------- Scroll-triggered reveals ------------------------------------- */
@@ -91,6 +232,7 @@ function initStaggers() {
 
 /* -------- Floating glass orbs (hero atmosphere) ----------------------- */
 function initFloaters() {
+    if (!useHeavyMotion) return;
     const floaters = document.querySelectorAll('[data-float]');
     floaters.forEach((el, i) => {
         const dur = 6 + (i % 4) * 1.5;
@@ -108,6 +250,7 @@ function initFloaters() {
 
 /* -------- Magnetic CTA (small lift on hover) -------------------------- */
 function initMagnetic() {
+    if (!useHeavyMotion) return;
     const items = document.querySelectorAll('[data-magnetic]');
     items.forEach((el) => {
         const strength = parseFloat(el.dataset.magnetic) || 0.25;
@@ -166,7 +309,7 @@ function initCounters() {
    Cards 1 & 3 stay anchored, cards 2 & 4 drift = depth illusion.
    ------------------------------------------------------------------ */
 function initParallax() {
-    if (prefersReducedMotion) return;
+    if (!useHeavyMotion) return;
     const items = document.querySelectorAll('[data-parallax]');
     items.forEach((el) => {
         const ratio = parseFloat(el.dataset.parallax) || 0.12;
@@ -201,7 +344,7 @@ function initReelReveal() {
     const media = section.querySelector('[data-reel-media]');
     const caption = document.querySelector('[data-reel-caption]');
 
-    if (prefersReducedMotion) {
+    if (!useHeavyMotion) {
         gsap.set([leftWord, rightWord, media, caption].filter(Boolean), { opacity: 1, x: 0, scale: 1 });
         return;
     }
@@ -237,7 +380,7 @@ function initProcessProgress() {
     const grid = document.querySelector('[data-process-grid]');
     if (!bar || !grid) return;
 
-    if (prefersReducedMotion) {
+    if (!useHeavyMotion) {
         bar.style.width = '100%';
         return;
     }
@@ -258,6 +401,7 @@ function initProcessProgress() {
    .card-spotlight::before radial gradient follows the pointer.
    --------------------------------------------------------------------- */
 function initSpotlights() {
+    if (!useHeavyMotion) return;
     const cards = document.querySelectorAll('[data-spotlight]');
     if (!cards.length) return;
 
@@ -311,7 +455,7 @@ function initLoadoutCards() {
             },
         });
 
-        if (prefersReducedMotion) return;
+        if (!useHeavyMotion) return;
 
         // 3D hover tilt — pointer-position aware
         const onMove = (e) => {
@@ -431,7 +575,7 @@ function initOrgLines() {
 
 /* ----- Subtle 3D tilt on [data-tilt] cards (About crew cards) ---------- */
 function initTilt() {
-    if (prefersReducedMotion) return;
+    if (!useHeavyMotion) return;
     const cards = document.querySelectorAll('[data-tilt]');
     if (!cards.length) return;
     cards.forEach((card) => {
@@ -456,9 +600,33 @@ function initTilt() {
     });
 }
 
+/* ----- Journal share-link copy --------------------------------------- */
+function initCopyLinks() {
+    document.querySelectorAll('[data-copy-url]').forEach((button) => {
+        button.addEventListener('click', async () => {
+            const url = button.dataset.copyUrl;
+            if (!url) return;
+
+            try {
+                await navigator.clipboard.writeText(url);
+                const originalLabel = button.getAttribute('aria-label');
+                const originalContent = button.innerHTML;
+                button.textContent = button.dataset.copySuccess || 'Copied';
+                button.setAttribute('aria-label', button.dataset.copySuccess || 'Link copied');
+                window.setTimeout(() => {
+                    button.innerHTML = originalContent;
+                    button.setAttribute('aria-label', originalLabel || 'Copy link');
+                }, 1800);
+            } catch {
+                window.prompt('Copy this article link:', url);
+            }
+        });
+    });
+}
+
 /* -------- Boot --------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-    createIcons({ icons });
+    createIcons({ icons: siteIcons });
     initReveals();
     initStaggers();
     initFloaters();
@@ -475,10 +643,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initTimelineProgress();
     initOrgLines();
     initTilt();
+    initCopyLinks();
 
     // Refresh ScrollTrigger after icons render (layout shifts)
     requestAnimationFrame(() => ScrollTrigger.refresh());
 });
 
+Alpine.data('contentVideo', contentVideo);
 Alpine.start();
-

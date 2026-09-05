@@ -17,15 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Admin user for the Filament panel (/admin)
-        User::query()->updateOrCreate(
-            ['email' => 'admin@vowlyn.com'],
-            [
-                'name' => 'Vowlyn Admin',
-                'password' => Hash::make('vowlyn-admin'),
-                'email_verified_at' => Carbon::now(),
-            ]
-        );
+        $localAdminEmail = env('LOCAL_ADMIN_EMAIL');
+        $localAdminPassword = env('LOCAL_ADMIN_PASSWORD');
+
+        if (app()->environment('local') && filled($localAdminEmail) && filled($localAdminPassword)) {
+            User::query()->updateOrCreate(
+                ['email' => $localAdminEmail],
+                [
+                    'name' => 'Vowlyn Local Admin',
+                    'password' => Hash::make($localAdminPassword),
+                    'email_verified_at' => Carbon::now(),
+                ]
+            );
+        }
 
         $this->call([
             ContactRequestSeeder::class,

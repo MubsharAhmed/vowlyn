@@ -8,7 +8,7 @@ Editorial quote layout, oversized typographic mark
 
             <div class="lg:sticky lg:top-32">
                 <div class="eyebrow-row mb-5" data-reveal>
-                    <span class="eyebrow">06 / Testimonials</span>
+                    <span class="eyebrow">Testimonials</span>
                 </div>
                 <h2 class="headline-display text-4xl sm:text-5xl text-slate-900 mb-6" data-reveal
                     data-reveal-delay="0.05">
@@ -29,8 +29,8 @@ Editorial quote layout, oversized typographic mark
 
                 <blockquote
                     class="relative font-display text-2xl sm:text-3xl lg:text-4xl leading-[1.25] text-slate-900 font-medium tracking-tight text-pretty mb-10">
-                    The team merged premium design with performance engineering. Our customers now enjoy a much smoother
-                    buying experience.
+                    Working with Vowlyn felt like adding a senior product team overnight. Our store rebuild lifted
+                    conversions 38% in the first quarter — and we finally own our stack.
                 </blockquote>
 
                 <figcaption class="relative flex items-center gap-4 pt-6 border-t border-lavender-300">

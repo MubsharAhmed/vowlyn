@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Resources\ContactRequests\Tables;
 
 use App\Models\ContactRequest;
+use App\Support\ServiceCatalog;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -39,9 +40,10 @@ class ContactRequestsTable
                     ->copyMessage('Email copied')
                     ->icon('heroicon-m-envelope'),
 
-                TextColumn::make('company')
-                    ->searchable()
-                    ->placeholder('—'),
+                TextColumn::make('service')
+                    ->formatStateUsing(fn (?string $state): string => ServiceCatalog::options()[$state] ?? '—')
+                    ->badge()
+                    ->color('primary'),
 
                 TextColumn::make('brief')
                     ->label('Brief')

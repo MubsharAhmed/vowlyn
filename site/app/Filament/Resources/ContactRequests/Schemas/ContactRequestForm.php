@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Filament\Resources\ContactRequests\Schemas;
 
 use App\Models\ContactRequest;
+use App\Support\ServiceCatalog;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class ContactRequestForm
@@ -32,8 +33,10 @@ class ContactRequestForm
                                 ->required()
                                 ->maxLength(160),
                         ]),
-                        TextInput::make('company')
-                            ->maxLength(160),
+                        Select::make('service')
+                            ->options(ServiceCatalog::options())
+                            ->required()
+                            ->native(false),
                         Textarea::make('brief')
                             ->label('Project brief')
                             ->required()

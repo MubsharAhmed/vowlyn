@@ -14,15 +14,17 @@ final class ContactRequestController extends Controller
     {
         $data = $request->validated();
 
+        $anchor = ($data['form_source'] ?? 'contact') === 'hero' ? 'home' : 'contact';
+
         // Drop honeypot, attach metadata
-        unset($data['website']);
+        unset($data['website'], $data['form_source']);
         $data['ip_address'] = $request->ip();
         $data['user_agent'] = substr((string) $request->userAgent(), 0, 255);
 
         ContactRequest::create($data);
 
         return redirect()
-            ->to(url('/') . '#contact')
+            ->to(url('/').'#'.$anchor)
             ->with('contact.success', "Thanks — we'll be in touch within 24 hours.");
     }
 }

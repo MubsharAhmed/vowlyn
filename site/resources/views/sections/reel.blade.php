@@ -4,7 +4,7 @@ Exo-Ape-inspired full-bleed showreel section. The video plays as the section's
 background; "Play" + "Projects" sit on top as fully visible display words.
 ============================================================================ --}}
 <section id="reel"
-    class="relative overflow-hidden bg-mesh-dark text-white min-h-[80vh] lg:min-h-[640px] flex items-center">
+    class="relative overflow-hidden bg-brand-stage text-white min-h-[80vh] lg:min-h-[640px] flex items-center">
 
     {{-- ============ Full-section background video ============ --}}
     {{-- TODO: replace src with the real Vowlyn showreel mp4 --}}
