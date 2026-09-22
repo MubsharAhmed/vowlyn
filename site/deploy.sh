@@ -36,7 +36,7 @@ HEALTH_PATHS=(
   "/services"
   "/portfolio"
   "/content-creation"
-  "/marketplace"
+  "/performance-marketing"
   "/why-us"
   "/admin/login"
   "/services/web-app-development"
@@ -94,6 +94,8 @@ run_local_release_gates() {
   for command_name in composer npm rsync ssh ffmpeg ffprobe "$LOCAL_PHP"; do
     command -v "$command_name" >/dev/null || die "Required local command is missing: $command_name"
   done
+  command -v magick >/dev/null || command -v convert >/dev/null || \
+    die "Required local command is missing: ImageMagick (magick or convert)"
 
   (
     cd "$LOCAL_SRC"
@@ -200,6 +202,10 @@ for command_name in "$php_bin" composer curl rsync sudo systemctl python3 mv rea
     exit 1
   }
 done
+if ! command -v magick >/dev/null && ! command -v convert >/dev/null; then
+  echo "Missing required server command: ImageMagick (magick or convert)" >&2
+  exit 1
+fi
 
 sudo -n true >/dev/null 2>&1 || {
   echo "The deploy user requires passwordless sudo. Use root or configure a restricted sudo rule." >&2
@@ -209,11 +215,6 @@ sudo systemctl is-active --quiet "$fpm_service" || {
   echo "PHP-FPM service is not active: $fpm_service" >&2
   exit 1
 }
-if ! command -v magick >/dev/null && ! command -v convert >/dev/null; then
-  echo "ImageMagick is required for optimized blog image variants." >&2
-  exit 1
-fi
-
 case "$mode" in
   bootstrap)
     [[ -d "$app_link" && ! -L "$app_link" && -f "$app_link/artisan" ]] || {

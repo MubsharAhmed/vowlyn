@@ -6,10 +6,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 
-final class MarketplaceController extends Controller
+final class PerformanceMarketingController extends Controller
 {
     public function __invoke(): View
     {
-        return view('pages.marketplace');
+        return view('pages.performance-marketing');
     }
 }

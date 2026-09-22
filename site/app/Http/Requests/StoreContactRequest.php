@@ -24,7 +24,7 @@ final class StoreContactRequest extends FormRequest
             'name' => ['required', 'string', 'min:2', 'max:120'],
             'email' => ['required', 'string', 'email:rfc', 'max:160'],
             'company' => ['nullable', 'string', 'max:160'],
-            'service' => ['required', 'string', Rule::in(ServiceCatalog::slugs())],
+            'service' => ['required', 'string', Rule::in(array_keys(ServiceCatalog::options()))],
             'brief' => ['required', 'string', 'min:20', 'max:4000'],
             'form_source' => ['nullable', 'string', Rule::in(['hero', 'contact'])],
 

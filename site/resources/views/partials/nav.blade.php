@@ -20,7 +20,7 @@
                 ['Portfolio', route('portfolio')],
                 ['Content', route('content-creation')],
                 ['Journal', route('blog.index')],
-                ['Marketplace', route('marketplace')],
+                ['Marketing', route('performance-marketing')],
                 ['About', route('about')],
                 ['Why Us', route('why-us')],
             ] as [$label, $href])
@@ -52,33 +52,35 @@
                     <i data-lucide="x" class="hidden size-5 group-open:block"></i>
                 </summary>
 
-                <div class="fixed inset-x-0 top-[5.25rem] bottom-0 bg-surface-ink/98 backdrop-blur-2xl overflow-y-auto overscroll-contain">
-                    <ul class="flex flex-col p-6 gap-1 text-on-inverse font-display text-2xl sm:text-3xl font-medium">
-                        @foreach ([
-                            ['Services', route('services')],
-                            ['Portfolio', route('portfolio')],
-                            ['Content', route('content-creation')],
-                            ['Journal', route('blog.index')],
-                            ['Marketplace', route('marketplace')],
-                            ['About', route('about')],
-                            ['Why Us', route('why-us')],
-                            ['Contact', url('/#contact')],
-                        ] as [$label, $href])
-                            <li>
-                                <a href="{{ $href }}"
-                                   class="block py-3 border-b border-white/8 hover:text-primary-300 transition">
-                                    {{ $label }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                    <div class="p-6 pt-2">
-                        <a href="{{ url('/#contact') }}" class="btn btn-primary w-full">
-                            Start a Project <i data-lucide="arrow-up-right" class="size-4"></i>
-                        </a>
-                    </div>
-                </div>
             </details>
+        </div>
+    </div>
+
+    {{-- Keep the fixed panel outside the blurred pill. A transformed/filtered ancestor
+         becomes the containing block for fixed children in mobile Safari. --}}
+    <div data-mobile-panel class="hidden fixed inset-x-0 top-[5.25rem] bottom-0 bg-surface-ink/98 backdrop-blur-2xl overflow-y-auto overscroll-contain">
+        <ul class="flex flex-col p-6 gap-1 text-on-inverse font-display text-2xl sm:text-3xl font-medium">
+            @foreach ([
+                ['Services', route('services')],
+                ['Portfolio', route('portfolio')],
+                ['Content', route('content-creation')],
+                ['Journal', route('blog.index')],
+                ['Marketing', route('performance-marketing')],
+                ['About', route('about')],
+                ['Why Us', route('why-us')],
+                ['Contact', url('/#contact')],
+            ] as [$label, $href])
+                <li>
+                    <a href="{{ $href }}" class="block py-3 border-b border-white/8 hover:text-primary-300 transition">
+                        {{ $label }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+        <div class="p-6 pt-2">
+            <a href="{{ url('/#contact') }}" class="btn btn-primary w-full">
+                Start a Project <i data-lucide="arrow-up-right" class="size-4"></i>
+            </a>
         </div>
     </div>
 </nav>

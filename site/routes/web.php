@@ -8,7 +8,7 @@ use App\Http\Controllers\BlogFeedController;
 use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\ContentCreationController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MarketplaceController;
+use App\Http\Controllers\PerformanceMarketingController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SitemapController;
@@ -22,7 +22,8 @@ Route::get('/services/{service}', [ServicesController::class, 'show'])
     ->where('service', '[a-z0-9-]+')
     ->name('services.show');
 
-Route::get('/marketplace', MarketplaceController::class)->name('marketplace');
+Route::get('/performance-marketing', PerformanceMarketingController::class)->name('performance-marketing');
+Route::redirect('/marketplace', '/performance-marketing', 301)->name('marketplace');
 Route::get('/portfolio', PortfolioController::class)->name('portfolio');
 Route::get('/content-creation', ContentCreationController::class)->name('content-creation');
 Route::get('/about', AboutController::class)->name('about');

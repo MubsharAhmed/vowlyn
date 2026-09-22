@@ -39,6 +39,8 @@ final class HomePageTest extends TestCase
         $response->assertSee('name="service"', false);
         $response->assertSee('Web App Development');
         $response->assertSee('AI Engineering &amp; Integration', false);
+        $response->assertSee('Content Creation, Photography &amp; Design', false);
+        $response->assertSee('Marketing');
         $response->assertDontSee('data-hero-scene', false);
     }
 
@@ -48,8 +50,10 @@ final class HomePageTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('data-mobile-menu', false);
+        $response->assertSee('data-mobile-panel', false);
         $response->assertSee('<summary', false);
         $response->assertDontSee('x-data="{ open: false }"', false);
+        $response->assertSee('Marketing');
     }
 
     public function test_about_specialist_layout_contains_mobile_width_constraints(): void

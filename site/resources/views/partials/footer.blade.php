@@ -58,6 +58,7 @@ FOOTER — Dark stage with logo (white wordmark), nav, contact, socials
                             ['Process', url('/#process')],
                             ['Portfolio', route('portfolio')],
                             ['Content Creation', route('content-creation')],
+                            ['Marketing', route('performance-marketing')],
                             ['Journal', route('blog.index')],
                             ['Why Us', route('why-us')],
                             ['Testimonials', url('/#testimonials')],

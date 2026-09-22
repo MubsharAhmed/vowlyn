@@ -174,10 +174,9 @@ body:has([data-mobile-menu][open]) {
     isolation: isolate;
   }
 
-  nav[data-nav] [data-mobile-menu] > div {
+  nav[data-nav] [data-mobile-panel] {
     position: fixed;
     z-index: 90;
-    display: block;
     inset-inline: 0;
     top: 5.25rem;
     bottom: 0;
@@ -188,8 +187,8 @@ body:has([data-mobile-menu][open]) {
     backdrop-filter: blur(24px);
   }
 
-  nav[data-nav] [data-mobile-menu]:not([open]) > div {
-    display: none;
+  nav[data-nav]:has([data-mobile-menu][open]) [data-mobile-panel] {
+    display: block;
   }
 }
 
@@ -971,13 +970,6 @@ body:has([data-mobile-menu][open]) {
   align-items: center;
   gap: .75rem;
   color: var(--journal-accent);
-}
-
-.journal-masthead__eyebrow::before {
-  width: 2.75rem;
-  height: 1px;
-  background: currentColor;
-  content: '';
 }
 
 .journal-masthead__copy h1 {

@@ -291,6 +291,9 @@ final class ServiceCatalog
             $options[$slug] = (string) $service['name'];
         }
 
+        $options['content-creation'] = 'Content Creation, Photography & Design';
+        $options['performance-marketing'] = 'Marketing';
+
         return $options;
     }
 }

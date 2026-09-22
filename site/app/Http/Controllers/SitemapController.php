@@ -23,7 +23,7 @@ final class SitemapController extends Controller
             ['loc' => route('services')],
             ['loc' => route('portfolio')],
             ['loc' => route('content-creation')],
-            ['loc' => route('marketplace')],
+            ['loc' => route('performance-marketing')],
             ['loc' => route('about')],
             ['loc' => route('why-us')],
             ['loc' => route('blog.index')],
