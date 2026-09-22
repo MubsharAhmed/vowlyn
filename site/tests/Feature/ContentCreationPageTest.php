@@ -19,5 +19,9 @@ final class ContentCreationPageTest extends TestCase
         $response->assertSee('Make them', false);
         $response->assertSee('Caledon Golf Club');
         $response->assertSee('media/content-creation/caledon-brand-film.mp4', false);
+        $response->assertSee('id="photography"', false);
+        $response->assertSee('id="design"', false);
+        $response->assertSee('Moventra Distribution');
+        $response->assertSee('loading="lazy"', false);
     }
 }
