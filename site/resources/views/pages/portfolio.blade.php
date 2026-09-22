@@ -28,7 +28,6 @@ above the wall, sticky filter chips by domain.
     <section class="relative bg-brand-stage text-white overflow-hidden grain pt-32 lg:pt-40 pb-10">
         <div class="container-vw mb-10">
             <div class="flex items-center gap-3 mb-5" data-reveal>
-                <span class="h-px w-10 bg-white/30"></span>
                 <span class="eyebrow !text-primary-300">Curated Index</span>
                 <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-white/35">{{ count($projects) }} selected projects</span>
             </div>
@@ -255,7 +254,6 @@ above the wall, sticky filter chips by domain.
             <div>
                 <div class="flex items-center gap-3 mb-6" data-reveal>
                     <span class="eyebrow !text-primary-300">Featured case study</span>
-                    <span class="h-px w-12 bg-white/20"></span>
                     <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-white/40">eCommerce · Growth</span>
                 </div>
                 <h2 class="headline-display text-4xl lg:text-5xl xl:text-6xl" data-reveal data-reveal-delay="0.05">

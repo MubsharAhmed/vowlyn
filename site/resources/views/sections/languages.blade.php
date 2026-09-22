@@ -142,7 +142,6 @@ Studio tool plates + stats strip + streaming type marquees on brand stage
         <!-- <div class="mb-16 lg:mb-20">
             <div class="flex items-center justify-between mb-8 flex-wrap gap-3">
                 <div class="flex items-center gap-3">
-                    <span class="h-px w-8 bg-white/30"></span>
                     <p class="eyebrow !text-white/65">Signature Loadout</p>
                 </div>
                 <p class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/35">
@@ -182,7 +181,6 @@ Studio tool plates + stats strip + streaming type marquees on brand stage
                                     <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
                                         VOL.{{ str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) }}
                                     </span>
-                                    <span aria-hidden="true" class="h-px w-6 bg-white/15"></span>
                                 </div>
 
                                 {{-- Geometric stroke-art glyph (unique per tool, draws in via GSAP) --}}

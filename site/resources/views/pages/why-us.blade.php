@@ -105,7 +105,6 @@ duplicate-content problem: boutique studio vs. typical agency.
         <div class="container-vw relative">
             <div class="max-w-4xl">
                 <div class="eyebrow-row mb-6" data-reveal>
-                    <span class="h-px w-10 bg-primary-700/40"></span>
                     <span class="eyebrow">Why Vowlyn</span>
                 </div>
 

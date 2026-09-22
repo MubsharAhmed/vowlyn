@@ -111,7 +111,6 @@ the strip via GSAP ScrollTrigger. Each panel has its own color story.
 
         <div class="container-vw relative">
             <div class="flex items-center gap-3 mb-6" data-reveal>
-                <span class="h-px w-10 bg-white/30"></span>
                 <span class="eyebrow !text-primary-300">Services Index</span>
                 <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-white/35">06 disciplines</span>
             </div>
@@ -187,7 +186,6 @@ the strip via GSAP ScrollTrigger. Each panel has its own color story.
                         <header class="relative flex items-start justify-between">
                             <div class="flex items-center gap-3">
                                 <span class="text-[10px] font-mono uppercase tracking-[0.22em] text-white/45">SVC.{{ $p['no'] }}</span>
-                                <span class="h-px w-6 bg-white/15"></span>
                                 <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/55">{{ $p['tag'] }}</span>
                             </div>
                             <span class="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border border-white/12 text-white/55">
