@@ -14,7 +14,9 @@ final class ContactRequestController extends Controller
     {
         $data = $request->validated();
 
-        $anchor = ($data['form_source'] ?? 'contact') === 'hero' ? 'home' : 'contact';
+        $formSource = $data['form_source'] ?? 'contact';
+        $anchor = $formSource === 'hero' ? 'home' : 'contact';
+        $service = $data['service'] ?? 'not-specified';
 
         // Drop honeypot, attach metadata
         unset($data['website'], $data['form_source']);
@@ -25,6 +27,11 @@ final class ContactRequestController extends Controller
 
         return redirect()
             ->to(url('/').'#'.$anchor)
-            ->with('contact.success', "Thanks — we'll be in touch within 24 hours.");
+            ->with('contact.success', "Thanks — we'll be in touch within 24 hours.")
+            ->with('analytics.event', [
+                'event' => 'generate_lead',
+                'form_source' => $formSource,
+                'service' => $service,
+            ]);
     }
 }

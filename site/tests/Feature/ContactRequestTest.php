@@ -25,6 +25,11 @@ final class ContactRequestTest extends TestCase
         $response = $this->post('/contact', $payload);
 
         $response->assertRedirect();
+        $response->assertSessionHas('analytics.event', [
+            'event' => 'generate_lead',
+            'form_source' => 'contact',
+            'service' => 'saas-development',
+        ]);
         $this->assertDatabaseHas('contact_requests', [
             'email' => 'jane@example.com',
             'name' => 'Jane Doe',
