@@ -75,11 +75,8 @@ FOOTER — Dark stage with logo (white wordmark), nav, contact, socials
             <div>
                 <p class="text-white/45 text-xs font-mono uppercase tracking-[0.16em] mb-4">Connect</p>
                 <ul class="space-y-2.5 text-sm">
-                    <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><span aria-hidden="true" class="grid size-4 place-items-center text-[0.6rem] font-bold leading-none">in</span> LinkedIn</a></li>
-                    <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><span aria-hidden="true" class="grid size-4 place-items-center text-xs leading-none">●</span> Dribbble</a></li>
-                    <li><a href="#" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><i data-lucide="x" class="size-4"></i> X / Twitter</a></li>
-            
-               </ul>
+                    <li><a href="{{ config('services.social.linkedin') }}" target="_blank" rel="noopener noreferrer" class="text-white/75 hover:text-white transition inline-flex items-center gap-2"><span aria-hidden="true" class="grid size-4 place-items-center text-[0.6rem] font-bold leading-none">in</span> LinkedIn</a></li>
+                </ul>
                 <p class="text-white/45 text-xs font-mono uppercase tracking-[0.16em] mt-8 mb-3">Regions</p>
                 <p class="text-white/65 text-sm">North America · Europe · MENA</p>
             </div>

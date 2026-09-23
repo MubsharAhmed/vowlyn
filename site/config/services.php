@@ -39,4 +39,18 @@ return [
         'measurement_id' => env('GA4_MEASUREMENT_ID', 'G-XBKNTW9W3M'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Company profiles
+    |--------------------------------------------------------------------------
+    |
+    | The accounts Vowlyn actually maintains. Linked from the footer and
+    | declared as Organization sameAs, so both stay in step when one changes.
+    |
+    */
+
+    'social' => [
+        'linkedin' => env('SOCIAL_LINKEDIN_URL', 'https://www.linkedin.com/company/vowlyn'),
+    ],
+
 ];

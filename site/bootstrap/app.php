@@ -12,7 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // RFC 8058 one-click unsubscribe: a mail provider posting on the
+        // recipient's behalf has no session and no CSRF token to send, so the
+        // unguessable token in the URL is what authorises the request.
+        $middleware->validateCsrfTokens(except: [
+            'unsubscribe/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

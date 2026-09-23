@@ -40,7 +40,10 @@ final class BlogController extends Controller
             ->orderBy('name')
             ->get();
 
-        return view('pages.blog.index', compact('featured', 'posts', 'categories'));
+        // The featured note is pinned above the grid, so it sits outside the paginator.
+        $totalPublished = $posts->total() + ($featured ? 1 : 0);
+
+        return view('pages.blog.index', compact('featured', 'posts', 'categories', 'totalPublished'));
     }
 
     public function subscribe(): View

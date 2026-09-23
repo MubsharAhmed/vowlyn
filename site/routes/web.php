@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogFeedController;
 use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\ContentCreationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OutreachUnsubscribeController;
 use App\Http\Controllers\PerformanceMarketingController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
@@ -50,3 +51,20 @@ Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::post('/contact', [ContactRequestController::class, 'store'])
     ->middleware('throttle:6,1')
     ->name('contact.store');
+
+/*
+| Opting out of cold outreach. The token is the credential, so the routes are
+| reachable without a login; POST is what RFC 8058 one-click unsubscribe calls,
+| and is therefore exempt from CSRF (see bootstrap/app.php).
+*/
+Route::get('/unsubscribe/{token}', [OutreachUnsubscribeController::class, 'show'])
+    ->where('token', '[A-Za-z0-9]{40}')
+    ->name('outreach.unsubscribe');
+
+Route::post('/unsubscribe/{token}', [OutreachUnsubscribeController::class, 'confirm'])
+    ->where('token', '[A-Za-z0-9]{40}')
+    ->name('outreach.unsubscribe.confirm');
+
+Route::post('/unsubscribe/{token}/undo', [OutreachUnsubscribeController::class, 'undo'])
+    ->where('token', '[A-Za-z0-9]{40}')
+    ->name('outreach.unsubscribe.undo');

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\ContactRequests\Tables;
 
+use App\Filament\Resources\ContactRequests\Actions\SendReplyAction;
 use App\Models\ContactRequest;
 use App\Support\ServiceCatalog;
 use Filament\Actions\BulkActionGroup;
@@ -62,6 +63,12 @@ class ContactRequestsTable
                         default => 'gray',
                     }),
 
+                TextColumn::make('messages_count')
+                    ->label('Replies')
+                    ->counts('messages')
+                    ->badge()
+                    ->color(fn (int $state): string => $state > 0 ? 'success' : 'gray'),
+
                 TextColumn::make('replied_at')
                     ->label('Replied')
                     ->dateTime('M j, Y')
@@ -75,6 +82,7 @@ class ContactRequestsTable
                     ->multiple(),
             ])
             ->recordActions([
+                SendReplyAction::make(),
                 ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make(),

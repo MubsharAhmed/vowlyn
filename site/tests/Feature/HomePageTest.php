@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use App\Support\ServiceCatalog;
 use Tests\TestCase;
 
 final class HomePageTest extends TestCase
@@ -14,6 +15,23 @@ final class HomePageTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('Vowlyn', false);
+    }
+
+    public function test_footer_and_organization_schema_list_only_the_profiles_we_maintain(): void
+    {
+        $response = $this->get('/');
+        $linkedin = (string) config('services.social.linkedin');
+
+        $response->assertOk()
+            ->assertSee('"sameAs"', false)
+            ->assertSee($linkedin, false)
+            ->assertDontSee('Dribbble')
+            ->assertDontSee('X / Twitter')
+            ->assertDontSee('x.com/vowlyn', false)
+            ->assertDontSee('dribbble.com/vowlyn', false);
+
+        // Linked from the footer and declared as the organization profile.
+        $this->assertSame(2, substr_count($response->getContent(), $linkedin));
     }
 
     public function test_home_page_renders_core_sections(): void
@@ -54,6 +72,25 @@ final class HomePageTest extends TestCase
         $response->assertSee('<summary', false);
         $response->assertDontSee('x-data="{ open: false }"', false);
         $response->assertSee('Marketing');
+    }
+
+    public function test_services_navigation_lists_every_discipline_and_a_call_to_action(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('data-services-trigger', false);
+        $response->assertSee('data-services-panel', false);
+        $response->assertSee('aria-haspopup="true"', false);
+
+        foreach (ServiceCatalog::list() as $service) {
+            $response->assertSee(route('services.show', $service['slug']), false);
+            $response->assertSee($service['name']);
+        }
+
+        $response->assertSee(route('services'), false);
+        $response->assertSee('All services');
+        $response->assertSee('Start a project');
     }
 
     public function test_about_specialist_layout_contains_mobile_width_constraints(): void

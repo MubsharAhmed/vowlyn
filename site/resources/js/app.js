@@ -278,6 +278,35 @@ function initNavFade() {
     });
 }
 
+/* -------- Services mega menu (desktop) --------------------------------
+   Opening and closing is pure CSS (:has on [data-nav]) so the menu survives
+   a failed bundle. This only keeps aria-expanded honest for screen readers
+   and lets Escape dismiss the menu without moving focus — the hover state is
+   suppressed until the pointer leaves the nav, otherwise Escape would look
+   like it did nothing.
+   --------------------------------------------------------------------- */
+function initServicesMenu() {
+    const nav = document.querySelector('[data-nav]');
+    const trigger = nav?.querySelector('[data-services-trigger]');
+    const panel = nav?.querySelector('[data-services-panel]');
+    if (!nav || !trigger || !panel) return;
+
+    const setExpanded = (open) => trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    setExpanded(false);
+
+    ['mouseenter', 'focus'].forEach((type) => trigger.addEventListener(type, () => setExpanded(true)));
+    panel.addEventListener('mouseenter', () => setExpanded(true));
+    nav.addEventListener('mouseleave', () => setExpanded(false));
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape' || trigger.getAttribute('aria-expanded') !== 'true') return;
+        nav.setAttribute('data-services-suppressed', '');
+        setExpanded(false);
+        document.activeElement?.blur?.();
+    });
+    nav.addEventListener('pointerleave', () => nav.removeAttribute('data-services-suppressed'));
+}
+
 /* -------- Counter animation (stats) ------------------------------------ */
 function initCounters() {
     const counters = document.querySelectorAll('[data-counter]');
@@ -600,6 +629,60 @@ function initTilt() {
     });
 }
 
+/* ----- Journal "load more" -------------------------------------------
+   The button *is* the next-page link, so it works without JavaScript by
+   navigating. With JavaScript the next page is fetched, its cards are
+   appended, and the numbered links — kept in the markup for crawlers — step
+   aside. A failed request falls back to that same navigation rather than
+   leaving a dead button on screen.
+   --------------------------------------------------------------------- */
+function initJournalLoadMore() {
+    const root = document.querySelector('[data-journal-more]');
+    const grid = document.querySelector('[data-journal-cards]');
+    if (!root || !grid) return;
+
+    const button = root.querySelector('[data-journal-more-button]');
+    const counter = root.querySelector('[data-journal-more-shown]');
+    let shown = Number(counter?.textContent ?? '0') || 0;
+
+    document.documentElement.classList.add('has-journal-load-more');
+
+    button?.addEventListener('click', async (event) => {
+        event.preventDefault();
+        button.setAttribute('aria-busy', 'true');
+
+        try {
+            const response = await fetch(button.href);
+            if (!response.ok) throw new Error(`Load more failed with ${response.status}`);
+
+            const page = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const cards = [...(page.querySelector('[data-journal-cards]')?.children ?? [])];
+            if (!cards.length) throw new Error('Load more found no further notes');
+
+            cards.forEach((card) => {
+                card.classList.add('journal-card--appended');
+                grid.append(card);
+            });
+
+            // The count reflects what is on screen, and the button follows the
+            // fetched page's own next link until there is nothing left to load.
+            shown += cards.length;
+            if (counter) counter.textContent = String(shown);
+
+            const next = page.querySelector('[data-journal-more-button]');
+            if (next) {
+                button.href = next.href;
+            } else {
+                button.remove();
+            }
+        } catch {
+            window.location.assign(button.href);
+        } finally {
+            button.removeAttribute('aria-busy');
+        }
+    });
+}
+
 /* ----- Journal share-link copy --------------------------------------- */
 function initCopyLinks() {
     document.querySelectorAll('[data-copy-url]').forEach((button) => {
@@ -632,6 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFloaters();
     initMagnetic();
     initNavFade();
+    initServicesMenu();
     initCounters();
     initParallax();
     initReelReveal();
@@ -644,6 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initOrgLines();
     initTilt();
     initCopyLinks();
+    initJournalLoadMore();
 
     // Refresh ScrollTrigger after icons render (layout shifts)
     requestAnimationFrame(() => ScrollTrigger.refresh());

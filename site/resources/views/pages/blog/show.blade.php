@@ -154,7 +154,7 @@
             <section class="journal-related">
                 <div class="container-vw">
                     <div class="journal-section-heading"><span>Continue reading</span><a href="{{ route('blog.category', $post->category->slug) }}">All {{ $post->category->name }} notes ↗</a></div>
-                    <div class="journal-card-grid">@foreach ($relatedPosts as $relatedPost)<x-blog.post-card :post="$relatedPost" />@endforeach</div>
+                    <x-blog.card-grid :posts="$relatedPosts" />
                 </div>
             </section>
         @endif

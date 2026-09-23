@@ -30,9 +30,9 @@
                     </div>
                     <div class="journal-home-header__intro">
                         <p>Experience-led writing about software, AI, product strategy, and growth. Clear lessons from real delivery work.</p>
-                        <div class="journal-home-header__actions">
-                            <a href="#journal-latest">Browse articles</a>
-                            <a href="{{ route('blog.subscribe') }}">Follow via RSS</a>
+                        <div class="journal-home-header__meta">
+                            <span>{{ $totalPublished }} {{ \Illuminate\Support\Str::plural('published note', $totalPublished) }}</span>
+                            <a href="{{ route('blog.subscribe') }}">Follow via RSS <span aria-hidden="true">↗</span></a>
                         </div>
                     </div>
                 </div>
@@ -43,49 +43,15 @@
             <div class="container-vw">
                 <x-blog.category-nav :categories="$categories" />
 
-                @if ($featured)
-                    <div class="journal-section-heading"><span>Featured article</span><span>Editor’s pick</span></div>
-                    <article class="journal-feature">
-                        <a href="{{ route('blog.show', $featured->slug) }}" class="journal-feature__media">
-                            @if ($featured->featured_image)
-                                @php($heroDimensions = $featured->imageDimensions('hero'))
-                                <img src="{{ $featured->imageUrl('hero') }}" alt="{{ $featured->featured_image_alt }}" width="{{ $heroDimensions['width'] }}" height="{{ $heroDimensions['height'] }}" fetchpriority="high" decoding="async" />
-                            @else
-                                <span class="journal-feature__placeholder" aria-hidden="true">V</span>
-                            @endif
-                        </a>
-                        <div class="journal-feature__copy">
-                            <div class="journal-feature__label"><span>Featured dispatch</span><span>01</span></div>
-                            <a href="{{ route('blog.category', $featured->category->slug) }}" class="journal-feature__category">{{ $featured->category->name }}</a>
-                            <h2><a href="{{ route('blog.show', $featured->slug) }}">{{ $featured->title }}</a></h2>
-                            <p>{{ $featured->excerpt }}</p>
-                            <div class="journal-feature__byline">
-                                <span>By <a href="{{ route('blog.author', $featured->author->slug) }}">{{ $featured->author->name }}</a></span>
-                                <time datetime="{{ $featured->published_at->toDateString() }}">{{ $featured->published_at->format('M j, Y') }}</time>
-                            </div>
+                <x-blog.card-grid :posts="$posts" :featured="$featured">
+                    <x-slot:empty>
+                        <div class="journal-empty">
+                            <span>Issue 00</span>
+                            <h2>The first field note is being written.</h2>
+                            <p>Original ideas take longer than recycled ones. Check back soon.</p>
                         </div>
-                    </article>
-                @endif
-
-                <div class="journal-section-heading">
-                    <span>Latest thinking</span>
-                    <span>{{ str_pad((string) $posts->total(), 2, '0', STR_PAD_LEFT) }} articles</span>
-                </div>
-
-                @if ($posts->isNotEmpty())
-                    <div class="journal-card-grid">
-                        @foreach ($posts as $post)
-                            <x-blog.post-card :post="$post" />
-                        @endforeach
-                    </div>
-                    <div class="journal-pagination">{{ $posts->onEachSide(1)->links() }}</div>
-                @else
-                    <div class="journal-empty">
-                        <span>Issue 00</span>
-                        <h2>The first field note is being written.</h2>
-                        <p>Original ideas take longer than recycled ones. Check back soon.</p>
-                    </div>
-                @endif
+                    </x-slot:empty>
+                </x-blog.card-grid>
             </div>
         </section>
 

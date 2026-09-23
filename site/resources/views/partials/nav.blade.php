@@ -4,7 +4,7 @@
    ============================================================================ --}}
 <nav
     data-nav
-    class="fixed top-4 inset-x-0 z-40 px-4 transition-all duration-500 [&.is-scrolled>div]:bg-surface-ink/85 [&.is-scrolled>div]:backdrop-blur-xl"
+    class="fixed top-4 inset-x-0 z-40 px-4 transition-all duration-500 [&.is-scrolled>div:first-child]:bg-surface-ink/85 [&.is-scrolled>div:first-child]:backdrop-blur-xl"
 >
     <div class="mx-auto max-w-7xl pill-dark rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-xl transition-all duration-500">
 
@@ -15,8 +15,22 @@
 
         {{-- Desktop links --}}
         <ul class="hidden lg:flex items-center gap-1 text-sm font-medium">
+            {{-- Services opens the mega menu on hover/focus. The ::after bridge
+                 spans the gap down to the panel so the pointer never crosses a
+                 dead zone on its way there. --}}
+            <li class="relative">
+                <a href="{{ route('services') }}"
+                   data-services-trigger
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                   class="group/svc relative flex items-center gap-1.5 px-3.5 py-2 rounded-full text-on-inverse/75 hover:text-white hover:bg-white/8 transition after:absolute after:inset-x-0 after:top-full after:h-6 after:content-['']">
+                    <span>Services</span>
+                    <i data-lucide="chevron-down" class="size-3.5 opacity-60 transition-transform duration-300 group-hover/svc:rotate-180"></i>
+                    <span aria-hidden="true" class="absolute inset-x-3.5 bottom-0.5 h-px origin-left scale-x-0 bg-[linear-gradient(90deg,#18d2ff,#7b41b3_55%,#c8459b)] transition-transform duration-300 group-hover/svc:scale-x-100"></span>
+                </a>
+            </li>
+
             @foreach ([
-                ['Services', route('services')],
                 ['Portfolio', route('portfolio')],
                 ['Content', route('content-creation')],
                 ['Journal', route('blog.index')],
@@ -55,6 +69,9 @@
             </details>
         </div>
     </div>
+
+    {{-- Desktop-only mega menu, anchored under the pill. --}}
+    @include('partials.nav-services-menu')
 
     {{-- Keep the fixed panel outside the blurred pill. A transformed/filtered ancestor
          becomes the containing block for fixed children in mobile Safari. --}}

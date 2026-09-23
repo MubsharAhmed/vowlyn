@@ -5,6 +5,7 @@ namespace App\Filament\Resources\ContactRequests;
 use App\Filament\Resources\ContactRequests\Pages\CreateContactRequest;
 use App\Filament\Resources\ContactRequests\Pages\EditContactRequest;
 use App\Filament\Resources\ContactRequests\Pages\ListContactRequests;
+use App\Filament\Resources\ContactRequests\RelationManagers\MessagesRelationManager;
 use App\Filament\Resources\ContactRequests\Schemas\ContactRequestForm;
 use App\Filament\Resources\ContactRequests\Tables\ContactRequestsTable;
 use App\Models\ContactRequest;
@@ -13,12 +14,17 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ContactRequestResource extends Resource
 {
     protected static ?string $model = ContactRequest::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Leads';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {
@@ -33,7 +39,7 @@ class ContactRequestResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            MessagesRelationManager::class,
         ];
     }
 

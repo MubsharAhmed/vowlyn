@@ -30,9 +30,7 @@ Meta + structured data per Vowlyn-Homepage-Rewrite-2026.md
           "areaServed": ["North America", "Europe", "MENA"],
           "knowsAbout": ["Web app development", "Mobile app development", "AI integration", "SaaS development", "Cloud DevOps", "Enterprise security"],
           "sameAs": [
-            "https://www.linkedin.com/company/vowlyn",
-            "https://x.com/vowlyn",
-            "https://dribbble.com/vowlyn"
+            "{{ config('services.social.linkedin') }}"
           ]
         },
         {

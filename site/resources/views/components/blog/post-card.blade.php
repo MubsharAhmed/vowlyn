@@ -1,7 +1,9 @@
-@props(['post'])
+@props(['post', 'featured' => false, 'priority' => false])
 
-<article class="journal-card group">
-    <a href="{{ route('blog.show', $post->slug) }}" class="journal-card__image" aria-label="Read {{ $post->title }}">
+@php($postUrl = route('blog.show', $post->slug))
+
+<article @class(['journal-card', 'journal-card--featured' => $featured])>
+    <div class="journal-card__image">
         @if ($post->featured_image)
             @php($cardDimensions = $post->imageDimensions('card'))
             <img
@@ -9,7 +11,7 @@
                 alt="{{ $post->featured_image_alt }}"
                 width="{{ $cardDimensions['width'] }}"
                 height="{{ $cardDimensions['height'] }}"
-                loading="lazy"
+                @if ($priority) fetchpriority="high" @else loading="lazy" @endif
                 decoding="async"
             />
         @else
@@ -17,18 +19,19 @@
                 <span>V</span><i></i>
             </span>
         @endif
-        <span class="journal-card__number">{{ $post->published_at?->format('m.y') }}</span>
-    </a>
+        @if ($featured)
+            <span class="journal-card__flag">Editors’ pick</span>
+        @endif
+    </div>
     <div class="journal-card__body">
         <div class="journal-card__meta">
             <a href="{{ route('blog.category', $post->category->slug) }}">{{ $post->category->name }}</a>
-            <span aria-hidden="true">·</span>
             <time datetime="{{ $post->published_at?->toDateString() }}">{{ $post->published_at?->format('M j, Y') }}</time>
         </div>
-        <h2><a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a></h2>
-        <p>{{ $post->excerpt }}</p>
-        <a href="{{ route('blog.show', $post->slug) }}" class="journal-card__link">
-            Read the article <span aria-hidden="true">↗</span>
-        </a>
+        <h2><a href="{{ $postUrl }}">{{ $post->title }}</a></h2>
+        <p class="journal-card__excerpt">{{ $post->excerpt }}</p>
+        <p class="journal-card__byline">
+            By <a href="{{ route('blog.author', $post->author->slug) }}">{{ $post->author->name }}</a>
+        </p>
     </div>
 </article>

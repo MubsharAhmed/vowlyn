@@ -40,6 +40,11 @@ Video uploads also require Vowlyn-scoped PHP and Nginx upload limits described i
 [CONTENT-VIDEOS.md](CONTENT-VIDEOS.md). Local SQLite databases and environment
 files are excluded from release uploads; production data remains on the VPS.
 
+Leads are answered by email from the admin panel, so the production `.env` must
+carry real `MAIL_*` values (see [MAIL-REPLIES.md](MAIL-REPLIES.md)). Until it
+does, the panel warns and records replies as logged rather than delivered — no
+code change or extra package is required to switch it on.
+
 ## Usage
 
 From the local `site` directory, run this once for the first atomic deployment:
@@ -112,6 +117,26 @@ Supported variables:
 - `DEPLOY_FPM_SERVICE`
 - `DEPLOY_KEEP_RELEASES`
 - `LOCAL_PHP`
+
+## Scheduled tasks
+
+The scheduler must be running on the server, or cold outreach never sends and a
+paused campaign looks like a broken one. One cron entry is enough:
+
+```cron
+* * * * * cd /var/www/vowlyn && php8.4 artisan schedule:run >> /dev/null 2>&1
+```
+
+That runs `outreach:send` every fifteen minutes, which sends only what the
+sending window and the daily limit allow. Verify it with:
+
+```bash
+php artisan schedule:list          # what is scheduled
+php artisan outreach:send          # run it once, by hand
+```
+
+See `OUTREACH.md` for the limits and `MAIL-REPLIES.md` for the mail credentials.
+Both features send with the same mailer, so if one is configured, both are.
 
 ## Zero-downtime rules
 

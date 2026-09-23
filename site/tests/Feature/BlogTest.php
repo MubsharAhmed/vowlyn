@@ -45,6 +45,93 @@ final class BlogTest extends TestCase
             ->assertSee('application/rss+xml', false);
     }
 
+    public function test_blog_index_pins_the_featured_note_on_the_first_page_and_counts_every_note(): void
+    {
+        [$category, $author] = [BlogCategory::factory()->create(), BlogAuthor::factory()->create()];
+        BlogPost::factory()->published()->count(12)->create([
+            'blog_category_id' => $category->id,
+            'blog_author_id' => $author->id,
+        ]);
+        $featured = BlogPost::factory()->published()->create([
+            'blog_category_id' => $category->id,
+            'blog_author_id' => $author->id,
+            'title' => 'The note the editor pinned',
+            'is_featured' => true,
+            'published_at' => now()->subDays(30),
+        ]);
+
+        $html = $this->get(route('blog.index'))->assertOk()->getContent();
+        $newest = BlogPost::query()->published()->whereKeyNot($featured->getKey())
+            ->latest('published_at')->value('title');
+
+        // A grid of cards, one shape each: featured first even though it is the oldest.
+        $this->assertSame(10, substr_count($html, '<article class="journal-card'));
+        $this->assertSame(1, substr_count($html, 'journal-card__flag'));
+        $this->assertStringContainsString('class="journal-card journal-card--featured"', $html);
+        $this->assertLessThan(strpos($html, $newest), strpos($html, 'The note the editor pinned'));
+
+        // The running total counts the pinned note, which sits outside the paginator.
+        $this->assertStringContainsString('13 published notes', $html);
+        $this->assertStringContainsString('data-journal-more-shown>10</span> of 13 notes', $html);
+    }
+
+    public function test_blog_index_keeps_the_featured_note_off_later_pages(): void
+    {
+        [$category, $author] = [BlogCategory::factory()->create(), BlogAuthor::factory()->create()];
+        BlogPost::factory()->published()->count(12)->create([
+            'blog_category_id' => $category->id,
+            'blog_author_id' => $author->id,
+        ]);
+        BlogPost::factory()->published()->create([
+            'blog_category_id' => $category->id,
+            'blog_author_id' => $author->id,
+            'title' => 'The note the editor pinned',
+            'is_featured' => true,
+        ]);
+
+        $html = $this->get(route('blog.index', ['page' => 2]))->assertOk()->getContent();
+
+        $this->assertStringNotContainsString('journal-card__flag', $html);
+        $this->assertStringNotContainsString('The note the editor pinned', $html);
+        $this->assertSame(3, substr_count($html, '<article class="journal-card'));
+        // The header keeps quoting the true total on every page.
+        $this->assertStringContainsString('13 published notes', $html);
+    }
+
+    public function test_blog_index_offers_load_more_with_crawlable_page_links_behind_it(): void
+    {
+        BlogPost::factory()->published()->count(11)->create();
+
+        $html = $this->get(route('blog.index'))->assertOk()->getContent();
+        $next = route('blog.index', ['page' => 2]);
+
+        // The button is a real next-page link, so it still works without JavaScript.
+        $this->assertStringContainsString('href="'.$next.'" rel="next" data-journal-more-button', $html);
+        // The numbered links stay in the markup for crawlers and for no-JS readers.
+        $this->assertStringContainsString('data-journal-pagination', $html);
+        $this->assertStringContainsString('href="'.$next.'"', $html);
+    }
+
+    public function test_archives_and_related_notes_render_the_same_card_grid(): void
+    {
+        $category = BlogCategory::factory()->create();
+        $author = BlogAuthor::factory()->create();
+        $posts = BlogPost::factory()->published()->count(4)->create([
+            'blog_category_id' => $category->id,
+            'blog_author_id' => $author->id,
+        ]);
+
+        $categoryHtml = $this->get(route('blog.category', $category->slug))->assertOk()->getContent();
+        $this->assertSame(4, substr_count($categoryHtml, '<article class="journal-card'));
+        $this->assertStringContainsString('data-journal-cards', $categoryHtml);
+        // Four notes fit on one page, so there is nothing to load more of.
+        $this->assertStringNotContainsString('data-journal-more-button', $categoryHtml);
+
+        $articleHtml = $this->get(route('blog.show', $posts->first()->slug))->assertOk()->getContent();
+        $this->assertSame(3, substr_count($articleHtml, '<article class="journal-card'));
+        $this->assertStringNotContainsString('data-journal-more-button', $articleHtml);
+    }
+
     public function test_readable_follow_page_explains_rss_and_keeps_the_raw_feed_available(): void
     {
         $this->get(route('blog.subscribe'))

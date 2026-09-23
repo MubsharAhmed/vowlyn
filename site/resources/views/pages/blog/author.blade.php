@@ -52,11 +52,11 @@
         </header>
         <section class="journal-index">
             <div class="container-vw">
-                <div class="journal-section-heading"><span>Articles by {{ $author->name }}</span><span>{{ $posts->total() }} published</span></div>
-                <div class="journal-card-grid">
-                    @foreach ($posts as $post)<x-blog.post-card :post="$post" />@endforeach
-                </div>
-                <div class="journal-pagination">{{ $posts->onEachSide(1)->links() }}</div>
+                <x-blog.card-grid :posts="$posts">
+                    <x-slot:empty>
+                        <div class="journal-empty"><span>Quiet byline</span><h2>{{ $author->name }} has not published a note yet.</h2></div>
+                    </x-slot:empty>
+                </x-blog.card-grid>
             </div>
         </section>
     </div>
