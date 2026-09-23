@@ -21,4 +21,16 @@
 Thumbs.db
 
 
-.Video Content-20260807T134736Z-1-001
+# Large video files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Private credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
