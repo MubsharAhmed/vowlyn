@@ -28,3 +28,9 @@ Thumbs.db
 
 
 ./home/atif/volwin/site/public/media
+
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
